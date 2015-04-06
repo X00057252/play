@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET     /index                      controllers.Application.index()
 
 # Courses page
 GET     /courses                   	controllers.Application.courses()
