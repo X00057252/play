@@ -1,0 +1,775 @@
+
+
+/* ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	March 2015 
+
+=========================================================== */
+
+
+
+
+/*colours used:
+-	active nav icon, article background: 	#
+-	on hover nav icon:					#
+-	nav icon background, img link:		#
+-	in-text link:						#	
+-	in-text link on hover:				#
+-	headers:							#
+-	picture borders:					#
+-	text, icons, plain background:		#
+-	content box background:				#
+-	table dark row, lightBox frame:		#
+*/
+
+
+
+/*===========================================================
+
+	Background style and images (id of the <body> tag)
+	
+=============================================================*/
+
+#home, #courses, #accommodation, #studentinfo, #visitors, #contact, #account, #apply{   /* pages body id-s */
+	background-color: #5F6008;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	margin: 0;
+	padding: 0:
+}
+
+#home {background-image: url('../Images/Backgrounds/BackCliffsMoher.jpg');}
+#courses {background-image: url('../Images/Backgrounds/BackChristchurch.jpg');}
+#accommodation {background-image: url('../Images/Backgrounds/BackStephensGreen.jpg');}
+#studentinfo {background-image: url('../Images/Backgrounds/BackConnemara.jpg');}
+#visitors {background-image: url('../Images/Backgrounds/BackGlenveagh.jpg');}
+#contact {background-image: url('../Images/Backgrounds/BackKilkennyCastle.jpg');}
+#account {background-image: url('../Images/Backgrounds/BackBective.jpg');}
+#apply {background-image: url('../Images/Backgrounds/BackHowth.jpg');}
+
+
+/*Making current page selection highlighted on the navigation menu: */	
+
+body#home nav a#homeNav,
+body#courses nav a#courseNav,
+body#accommodation nav a#accNav,
+body#studentinfo nav a#infoNav,
+body#visitors nav a#visitNav,
+body#contact nav a#contactNav,
+body#account nav a#accountNav{
+	background: #007C7E;	
+	color: #FCF9DA;
+}
+
+
+@font-face {   
+   font-family: Gidole;
+   src: url(Gidole-Regular.otf);  
+} 
+
+
+@media screen and (max-width: 520px){
+	body{
+		font-size: 80%;
+	}
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+/*===========================================================
+
+	MAIN WRAPPER 
+	
+=============================================================*/
+
+
+.mainWrap{
+	display: inline-block;
+	margin: 0 0 -3% 0;
+	width: 100%;
+	overflow: auto;
+	font-family: Gidole;
+	font-size: 120%;
+	color: #333;
+	min-width: 320px;
+}
+
+.topBar{
+	display: block;
+	position: fixed;
+	overflow: auto;
+	width: 100%;
+	min-width: 320px;
+	top: 0;
+	background-color: #E9ED75;
+	margin: 0;
+	z-index: 99;
+	box-shadow: .0em .0em .3em .2em #333;
+}
+
+
+
+/*===========================================================
+
+	NAVIGATION 
+	
+=============================================================*/
+
+.navDown{ /* this causes the nav section to align to the bottom */
+	display: inline-block;
+	width: 50%;
+	font-size: 80%;
+	height: 3em;
+	/*border-style: solid;
+	border-width: 1px;
+	border-color: blue;		*/
+}
+@media screen and (max-width: 1350px){
+	.navDown{
+		width: 20%;
+	}
+}
+@media screen and (max-width: 850px) {
+	.navDown{
+		width: 0;
+	}
+}
+nav{
+	display: inline-block;
+	margin-top: .2em;
+	float: left;	
+	font-weight: bold;
+	/*border-style: solid;
+	border-width: 1px;
+	border-color: blue;		*/
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+	display: inline;
+}
+
+nav a {
+	transition: all 0.4s ease;
+	display: inline-block;
+	height: 3.2em;
+	text-align: center;
+	padding: .5em .5em .2em .5em;
+	text-decoration: none;
+	font-size: 75%;
+	color: #333;
+	border-radius: .2em;	
+}
+
+nav a:hover{ 
+	background-color: #FDF5AA; 
+	text-decoration: none;
+	transform: scale(1.1); 
+}
+
+.logoLink{
+	display: inline-block;
+	border: none;
+	float: left;
+	height: 6em;
+	width: auto;
+	margin: 0;
+	font-size: 80%;
+	padding-bottom: .5em;
+	/*border-style: solid;
+	border-width: 1px;
+	border-color: blue;	*/
+}
+
+
+
+
+
+/*===========================================================
+
+	MAIN CONTENT ELEMENTS 
+	
+=============================================================*/
+
+
+
+
+/*   section here is the main content area where article boxes reside  */
+section{ 
+	display: block;
+	overflow: auto;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 6.5em;
+	padding: 0em 0em .5em 0em;
+	border-radius: .2em;
+	/*border-style: solid;
+	border-width: 1px;
+	border-color: blue;		*/
+}
+@media screen and (max-width: 1578px) {
+	section{
+		margin-top: 8.5em;
+	}
+}
+@media screen and (max-width: 948px) {
+	section{
+		width: 98%;
+	}
+}
+
+@media screen and (max-width: 682px){
+	section{
+		margin-top: 10.7em;
+		width: 98%;
+	}
+}
+@media screen and (max-width: 378px){
+	section{
+		margin-top: 15.5em;
+	}
+}
+footer section{
+	margin-top: 0;
+}
+.sectionNarrow{
+	vertical-align: top;
+	display: inline-block;
+	margin: 0;
+	width: 48.5%;
+}
+@media screen and (max-width: 1200px) {
+	.sectionNarrow{
+		width: 100%;
+	}
+}
+
+.sectionNarrowRight{
+	float: right;
+	display: inline-block;
+	margin: 0;
+	width: 48.5%;	
+}
+@media screen and (max-width: 1200px) {
+	.sectionNarrowRight{
+		width: 100%;
+	}
+}
+.centrColBar{  
+	margin-top: 0;
+	padding: .2em 0em .2em 0em;	
+}
+.backLink, .backLink:active{
+	display: block;
+	clear: right;
+	font-size: 80%;
+	text-decoration: none;
+    color: #869700; 
+	background-color: #FCF9DA;
+	text-align: right;
+	float: right;
+	margin: 5em 2em 0em 0em;
+	padding: .2em .2em .2em .2em;
+	border-radius: .2em;
+	opacity: .9;
+}
+@media screen and (max-width: 378px){
+	.backLink, .backLink:active{
+		margin-top: .5em;
+	}
+}
+.backLink:hover {
+	color: #C9CF4B;	
+}
+
+
+
+/* has it's own section so the footer's content matches the main content area */
+footer{
+	background-color: #333; /*#5F6008;*/
+	width: 100%;
+	font-size: 80%;
+	margin-top: 1em;
+	margin-bottom: 0;
+	padding-bottom: 4em;
+	text-align: center;
+	color: #E9ED75;
+	box-shadow: .0em .0em .3em .3em #222;
+}
+
+
+.FooterArtc{
+	display: inline-block;
+	background-color: #333; /*#5F6008;*/
+	padding-top: 2em;
+	width: 33%;
+	margin: 0;
+	/*border-style: solid;
+	border-width: 1px;
+	border-color: blue;	*/	
+}
+@media screen and (max-width: 1200px) {
+	.FooterArtc{
+		width: 43%;
+	}
+}
+
+@media screen and (max-width: 682px) {
+	.FooterArtc{
+		width: 100%;
+	}
+}
+
+
+/* ======================= article box   */
+article{
+	display: block;
+	vertical-align: top;
+	overflow: auto;
+	transition: all 0.4s ease;
+	background-color: #FCF9DA;
+	margin: 2em 0em 0em 0em;
+	padding: 1em 1em 0em 1em;
+	width: 100%;
+	border-radius: .2em;
+}
+@media screen and (max-width: 682px){
+	article{
+		margin-top: .5em;
+	}
+}
+@media screen and (max-width: 520px) {
+	article{
+		padding: .2em;
+	}
+}
+
+.wideArticle{
+	width: 100%;
+}
+
+.innerArticle{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+p{
+	margin: 0;
+	padding: 0em .3em 1em .3em;
+}
+.caption{
+	display: block;
+	font-size: 80%;
+	width: 100%;
+	text-align: right;
+}
+
+iframe{
+	border: 1px solid #FCF9DA;
+	border-radius: .5em;
+}
+
+/* ======================= in-text links:   */
+article a, article a:active{
+    text-decoration: underline;
+    color: #869700; 
+	background: none;	
+}
+article a:hover{
+	color: #C9CF4B;
+}
+article a:visited{
+	color: #007C7E;
+}
+
+aside{
+	display: block;
+	vertical-align: top;
+	overflow: auto;
+	background-color: #FDF5AA;
+	margin: 1em .5em 1em .5em;
+	padding: 0em 1em 1em 1em;
+	border-radius: .2em;
+}
+
+
+
+/*  =======================  hidden and open article parts: */
+.sectHidd {
+    display: none; 
+}
+
+a.showLink, a.hideLink , a.showLink:visited, a.hideLink:visited, a.showLink:visited, a.hideLink:visited{
+    text-decoration: none;
+	font-weight: bold;
+	color: #869700;
+	margin: 1em;
+	float: right;
+}
+a.showLink:hover, a.hideLink:hover, a.showLink:active, a.hideLink:active{
+    text-decoration: none;
+	color: #C9CF4B;	
+	background: none;
+	transform: scale(1);
+}
+
+.topAnchor{ /*this is so page anchors display where they should > change the number of ems for different screen sizes*/
+	position: relative;
+	top: -10em;
+	display: block;
+	height: 0;
+	width:0;
+}
+
+
+
+
+/* ======================= article headers:   */
+
+h2{ 
+	display: block;
+	float: left;
+	width: 100%;
+	margin: 0em 0em .8em 0em;
+	padding: .4em .2em .3em .5em;
+	font-weight: bold;
+	font-size: 140%;
+	background-color: #5F6008;
+	color: #FCF9DA;
+	border-radius: .2em;	
+}
+@media screen and (max-width: 520px) {
+	h2{
+		margin-bottom: .3em;
+	}
+}
+	
+h2 a.showLink, h2 a.showLink:visited, h3 a.showLink, h3 a.showLink:visited{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 70%;
+	color: #869700; 
+	margin: .5em 0em 0em 0em;
+	float: right;
+}
+h2 a.showLink, h2 a.showLink:visited{
+	color: #FCF9DA;	
+}
+
+h2 a.showLink:hover, h2 a.showLink:active, h3 a.showLink:hover, h3 a.showLink:active{
+    text-decoration: none;
+	color: #C9CF4B; /*E9ED75;	*/
+	background: none;
+	transform: scale(1);
+}
+
+
+
+h3{
+	display: block;
+	width: 100%;
+	margin: 0em 0em .8em 0em;
+	padding: .2em .2em .2em .5em;
+	font-weight: bold;
+	font-size: 120%;
+	background-color: #E9ED75;
+	color: #333;
+	border-radius: .2em;	
+}
+@media screen and (max-width: 520px) {
+	h3{
+		margin-bottom: .3em;
+	}
+}
+
+/* ======================= photos:   */
+
+img{
+	display: inline-block;
+	float: right;
+	margin: 0em 0em 1em 1em;
+	width: 23em;
+	border: 1px solid #FCF9DA;
+	border-radius: .5em;
+}
+@media screen and (max-width: 682px){
+	img{
+		margin: .5em 0em 1em 0em;
+		width: 100%;
+	}
+}
+
+footer img{
+	width: auto;
+}
+
+.imgWide, .imgWideLink{
+	width: 100%;
+	margin: .5em 0em 1em 0em;
+}
+
+.imgWideLink:hover{
+	opacity: .7;
+}
+
+
+/*===========================================================
+
+	FORMS - INCLUDING LOGIN 
+	
+=============================================================*/
+
+
+/* ======================= general forms: */
+
+form{
+	display: block;
+	font-family: Gidole;
+	color: #333;
+	background-color: #E9ED75;
+	width: 100%;
+	padding: 1em;
+	margin: 0em 0em 1em 0em; 
+	overflow: auto;
+	border-radius: .2em;	
+}
+
+.loginForm{
+	display: inline-block;
+	padding: 0em 0em .2em 0em;
+	margin: 0;
+	width: 15em;
+	float: right;
+	font-size: 80%;
+	height: 6em;
+	/*border-style: solid;
+	border-width: 1px;
+	border-color: blue;	*/	
+}
+@media screen and (max-width: 378px){
+	.loginForm{
+		float: left;
+		width: 100%;
+	}
+}
+
+.formRow{ 
+	display: block;
+	padding-bottom: 0.5em;
+	width: 100%;
+	overflow: hidden;
+	clear: left;
+	zoom: 1;
+}
+
+.formRowIndent{
+	padding-left: 28%;
+    width: 90%;
+}
+
+fieldset{
+	margin-bottom: 1em;
+	padding-top: 1em;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #C9CF4B;
+	border-radius: .5em;
+}
+legend{
+	background-color: #C9CF4B;
+	padding: 0em .5em 0em .5em;
+	border-radius: .2em;	
+}
+
+/* =======================  labels: */
+
+.formLabel, .loginLabel{
+	display: inline-block;
+	padding: .1em 0em 0em 0em;
+	width: 28%;
+	padding-right: 2%;
+	text-align: right;
+	float: left;
+}
+.loginLabel{
+	width: 5em;
+}
+
+
+
+
+
+/* ======================= inputs: */
+
+.formInput, .loginInput, .formInputReq, .formSelect, .textField{
+	display: inline-block;
+	padding: 0.2em;
+	margin: 0em;
+	transform: none;
+	font-family: Gidole;
+	width: 70%;
+	float: left;
+	border: none;
+	background-color: #FCF9DA;
+	font-size: 90%;
+	border-radius: .2em;
+}
+
+.loginInput{
+	margin: 0;
+	width: 10.5em; 
+	float: right;
+}
+@media screen and (max-width: 378px){
+	.loginInput{
+		float: left;
+		margin-left: .5em;
+		width: 70%;
+	}
+}
+.formInput:focus, .loginInput:focus, .formInputReq:focus, .formSelect:focus, .textField:focus{
+	background-color: #FCF9DA;
+	transform: scale(1);
+}
+
+.formInputReq {
+	border-style: solid;
+	border-width: 2px;
+	border-color: #E60000;	
+}
+
+.formOption{
+	font-family: Gidole;
+}
+
+.formSelect{
+	width: 70%;
+	background-color: #FCF9DA;
+	background-image: url(../Images/Icons/dwnArr.png); 
+	background-repeat: no-repeat;	
+	background-size: 1.7em;
+	background-position: 98% 0%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;	
+}
+ 
+.formList{
+    margin: 0;
+	margin-bottom: 1em;
+    padding: 0;
+    list-style: none;
+}
+
+.radioBtn{
+    margin-left: 1px;
+    margin-right: 0.5em;
+}
+.checkieBox{
+    margin-left: 1px;
+    margin-right: 0.5em;
+}
+
+/* ======================= buttons:  */
+
+.formBttn, .loginBttn{
+	display: inline-block;
+	margin: 0em 1em 0em 0em;
+	padding: .2em .5em .2em .5em;
+	float: left;
+	transition: all 0.4s ease;
+	border: 0;
+    color: #333;
+    background-color: #E9ED75;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #333;
+	border-radius: .2em;	
+	font-weight: bold;
+}
+.loginBttn{
+	font-size: 80%;
+	margin: 0em 0em .1em 7em;	
+}
+a.formBttn, a.formBttn:hover, a.formBttn:focus, a.formBttn:visited{
+	text-decoration: none;
+	color: #333;
+}
+
+.formBttn:hover, :focus, .loginBttn:hover, :focus{
+	background-color: #FDF5AA; 
+	text-decoration: none;
+	transform: scale(1.1); 
+}
+.formBttn:active, .loginBttn:active{
+    background-color: #007C7E;
+	color: #FCF9DA;
+}
+
+
+
+
+/*===========================================================
+
+	TABLES
+	
+=============================================================*/
+
+
+
+table{
+	display: inline-block;
+	margin: 0em 1em 2em 0em;
+	border-collapse: collapse;
+	color: #434242;
+	border-radius: .2em;
+	border-style: solid;
+	border-width: 2;
+	border-color: #C9CF4B;
+}
+tr{
+	vertical-align: middle;
+	padding: .4em 1em .4em 1em;
+}
+tr.darkRow{
+	background-color: #FDF5AA;
+}
+
+th{
+    background-color: #C9CF4B;
+	text-align: left;
+	height: 2em;
+	padding: .4em 1em .4em 1em;
+	vertical-align: middle;
+}
+
+/* in-cell text alignment classes:  */
+td{
+	padding: .4em 1em .4em 1em;
+}
+@media screen and (max-width: 520px) {
+	tr, th, td{
+		padding: .2em .3em .2em .3em;
+	}
+}
+.toRight{  
+	text-align: right;
+ 
+}
+.toLeft{
+	text-align: left;
+}

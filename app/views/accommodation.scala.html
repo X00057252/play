@@ -1,0 +1,205 @@
+@main("Accommodation") {
+
+<body id="accommodation">
+
+<section>
+				
+				<article class="wideArticle">
+						<h2> Student Accommodation </h2>
+						<p><img src="@routes.Assets.at("Images/Photo.png")" alt="Placeholder Photo"></p>
+						<p>
+							Students can choose to stay with a host family or live on their own privately renting 
+							and sharing	a house or an apartment. Staff at Progress School of English can offer 
+							advice on where best to search for accommodation and what areas are most safe and practical to live in.
+						</p>
+						<p>
+							Our Accommodation Officer is always there to help with any queries you may have.
+						</p>	
+				</article>
+
+			
+			
+			<section class="sectionNarrow">
+				<article>  <!-- Host family accommodation -->
+					<div id="hiddyHost-top"> <!-- open part -->
+						<h2> Host Family Accommodation 	
+							<!-- read more link -->
+							<a href="#" id="hiddyHost-show" class="showLink" onclick="showHide('hiddyHost');return false;">Read more &#8659; </a>
+						</h2>
+					</div> <!-- End of Open part -->
+					
+					<div id="hiddyHost" class="sectHidd"> <!-- Hidden part -->
+						<img class="imgWide" src="@routes.Assets.at("Images/Photo.png")" alt="Placeholder Photo">
+						<p>	
+							Students benefit hugely from staying with an Irish family. this is a perfect 
+							opportunity to converse and encounter new cultural experiences in a natural 
+							and warm environment. You will be welcomed into someone's home and cared for as 
+							one of the family. You will be exposed to language and culture in a variety of ways; 
+							for example - through conversation, television, radio, newspapers and magazines. 
+						</p>
+						<h3> Staying with a Host Family </h3>
+						<p>
+							Host families provide breakfast and an evening meal from Monday to Friday and breakfast, 
+							lunch and evening meal at weekends. Irish breakfast nowadays is usually a light meal 
+							- fruit juice, cereal, toast and tea or coffee. Lunch on working days is generally 
+							a snack or sandwich. The main meal (usually meat or fish served with vegetables 
+							followed by dessert) is eaten at about 6 or 7 pm. 
+						</p>
+						<p>
+							All host families are carefully selected and inspected by our Accommodation Officer 
+							before their registration with the school is fully completed and then they 
+							are regularly monitored once the student moves in with the family. 
+							They also live on or near a direct bus route to Rathmines.
+						</p>
+						<p>
+							We also gives a questionnaire to the families prior to registration so that they can 
+							indicate their availability and also their preferences regarding gender, 
+							nationality, age group, etc.
+						</p>	
+						<h3> Booking a Host Family </h3>
+						<p>
+							Students who would like to book host family accommodation must fill in 
+							a questionnaire indicating their preferences or any special dietary requirements 
+							they may have such as being vegetarians, allergies, etc. during the course registration process.
+						</p>
+						<p>
+							Once the booking is finalized the student pays the accommodation fee to the 
+							school and we then pay the host family for the period of time booked through Progress School of English.
+						</p>	
+						<p>
+							You can <a href="apply.html">book a host family here.</a>
+						</p>
+						<!-- "Hide" link -->
+						<p>
+							<a href="#" id="hiddyHost-hide" class="hideLink" onclick="showHide('hiddyHost');return false;">Hide &#8657; </a>
+						</p>	 				
+					</div> <!-- End of Hidden part -->
+				</article> <!-- End of: Host family accommodation article-->
+					
+
+
+
+				<article>  <!-- Host family prices -->
+					<div id="hiddyHostPrice-top" <!-- open part -->
+						<h2> Host Family price-list 
+							<!-- read more link -->
+							<a href="#" id="hiddyHostPrice-show" class="showLink" onclick="showHide('hiddyHostPrice');return false;">Read more &#8659; </a>
+						</h2>
+					</div> <!-- End of Open part -->
+					
+					<div id="hiddyHostPrice" class="sectHidd"> <!-- Hidden part -->
+						<p>	
+							We offer very competitive Host Family accommodation prices. See the full list below.
+						</p>
+						<table>
+							<tr>
+								<th class="toLeft">Length of Stay</th>
+								<th class="toRight">Price per Week</th>		
+								<th class="toRight">Total Price</th>
+								<th class="ToLeft">&nbsp;</th>
+							</tr>
+							<tr>
+								<td class="toLeft">2 weeks</td>
+								<td class="toRight">&#8364; 170</td>		
+								<td class="toRight">&#8364; 340</td>
+								<td class="toRight"><a class="formBttn" href="apply.html">Book</a></td>
+							</tr>
+							<tr class="darkRow">
+								<td class="toLeft">4 weeks</td>
+								<td class="toRight">&#8364; 150</td>		
+								<td class="toRight">&#8364; 600</td>
+								<td class="toRight"><a class="formBttn" href="apply.html">Book</a></td>
+							</tr>
+							<tr>
+								<td class="toLeft">8 weeks</td>
+								<td class="toRight">&#8364; 130</td>		
+								<td class="toRight">&#8364; 1040</td>
+								<td class="toRight"><a class="formBttn" href="apply.html">Book</a></td>
+							</tr>
+							<tr class="darkRow">
+								<td class="toLeft">12 weeks</td>
+								<td class="toRight">&#8364; 110</td>		
+								<td class="toRight">&#8364; 1320</td>
+								<td class="toRight"><a class="formBttn" href="apply.html">Book</a></td>
+							</tr>
+						</table>
+						<!-- "Hide" link -->
+						<p>
+							<a href="#" id="hiddyHostPrice-hide" class="hideLink" onclick="showHide('hiddyHostPrice');return false;">Hide &#8657; </a>
+						</p>	 				
+					</div> <!-- End of Hidden part -->
+				</article> <!-- End of: Host family prices -->
+			</section> <!-- end of narrow section -->
+				
+				
+			<section class="sectionNarrowRight">
+				<article>  <!-- Renting privately  -->
+					<div id="hiddyRent-top"> <!-- open part -->
+						<h2> Private Rental Accommodation 
+							<!-- read more link -->
+							<a href="#" id="hiddyRent-show" class="showLink" onclick="showHide('hiddyRent');return false;">Read more &#8659; </a>
+						</h2>
+					</div> <!-- End of Open part -->
+					
+					<div id="hiddyRent" class="sectHidd"> <!-- Hidden part -->	
+						<img class="imgWide" src="@routes.Assets.at("Images/Photo.png")" alt="Placeholder Photo">
+						<p>	
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+						</p>
+
+						<h3> Finding house or apartment </h3>
+						<p>
+							At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium 
+							voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, 
+							obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, 
+							id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
+						</p>
+						<p>	
+							Here are some accommodation websites (open in a new tab):
+						</p>
+						<p>
+							<a class="textLink" href="http://www.daft.ie" target="blank">Daft.ie</a> - the most popular 
+							site to find accommodation in Dublin.
+							</br>
+							<a class="textLink" href="http://www.rent.ie/" target="blank">Rent.ie</a> - sister site of Daft.ie
+							</br>
+							<a class="textLink" href="http://www.myhome.ie/" target="blank">MyHome.ie</a> - another popular property website.
+						</p>
+						<h3> Practical tips </h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+						</p>
+						<p>
+							At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium 
+							voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, 
+							obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, 
+							id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+						</p>				
+						<!-- "Hide" link -->
+						<p>
+							<a href="#" id="hiddyRent-hide" class="hideLink" onclick="showHide('hiddyRent');return false;">Hide &#8657; </a>
+						</p>	 				
+					</div> <!-- End of Hidden part -->
+				</article> <!-- End of: Renting privately article-->
+					
+			</section> <!-- end of narrow section -->
+			
+			
+			
+			<a class="backLink" href="@routes.Assets.at("Images/Backgrounds/BackStephensGreen.jpg")" data-lightbox="Stephens" title="St Stephen's Green - Dublin">
+				Background image: St Stephen's Green, Dublin<br>
+				Author: Leonel<br>
+				Click here to see the image.
+			</a>
+			
+		</section> 
+
+	
+</body>
+}
