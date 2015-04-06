@@ -43,14 +43,14 @@
 	padding: 0:
 }
 
-#home {background-image: url('../../assets/Images/Backgrounds/BackCliffsMoher.jpg');}
-#courses {background-image: url('../Images/Backgrounds/BackChristchurch.jpg');}
-#accommodation {background-image: url('../Images/Backgrounds/BackStephensGreen.jpg');}
-#studentinfo {background-image: url('../Images/Backgrounds/BackConnemara.jpg');}
-#visitors {background-image: url('../Images/Backgrounds/BackGlenveagh.jpg');}
-#contact {background-image: url('../Images/Backgrounds/BackKilkennyCastle.jpg');}
-#account {background-image: url('../Images/Backgrounds/BackBective.jpg');}
-#apply {background-image: url('../Images/Backgrounds/BackHowth.jpg');}
+#home {background-image: url('../images/Backgrounds/BackCliffsMoher.jpg');}
+#courses {background-image: url('../images/Backgrounds/BackChristchurch.jpg');}
+#accommodation {background-image: url('../images/Backgrounds/BackStephensGreen.jpg');}
+#studentinfo {background-image: url('../images/Backgrounds/BackConnemara.jpg');}
+#visitors {background-image: url('../images/Backgrounds/BackGlenveagh.jpg');}
+#contact {background-image: url('../images/Backgrounds/BackKilkennyCastle.jpg');}
+#account {background-image: url('../images/Backgrounds/BackBective.jpg');}
+#apply {background-image: url('../images/Backgrounds/BackHowth.jpg');}
 
 
 /*Making current page selection highlighted on the navigation menu: */	
@@ -659,7 +659,7 @@ legend{
 .formSelect{
 	width: 70%;
 	background-color: #FCF9DA;
-	background-image: url(../Images/Icons/dwnArr.png); 
+	background-image: url(../images/Icons/dwnArr.png); 
 	background-repeat: no-repeat;	
 	background-size: 1.7em;
 	background-position: 98% 0%;
