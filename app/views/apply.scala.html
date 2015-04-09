@@ -1,0 +1,201 @@
+@main("Apply") {
+
+<body id="apply">
+
+<section>
+				
+
+				<article class="wideArticle">
+					<h2> Blah </h2>
+					<p><img src="@routes.Assets.at("images/Photo.png")" alt="Placeholder Photo"></p>
+						<p>
+							Fields marked with * must be filled in.
+						</p>
+						<form action="" method="post" id="persDetailsForm">
+							<fieldset>
+								<legend> Who are you: </legend>
+								<div class="formRow">
+									<label class="formLabel" for="firstName">*First name:</label>
+									<input class="formInputReq" id="firstName" name="firstName" type="text" placeholder="Enter your first name" required>
+								</div>
+								<div class="formRow">
+									<label class="formLabel" for="lastName">*Last name:</label>
+									<input class="formInputReq" id="lastName" name="lastName" type="text" placeholder="Enter your surname" required>
+								</div>
+								<label class="formLabel" for="gender">Are you:</label>
+								<div class="formRowIndent">
+									<ul class="formList">
+										<li><input class="radioBtn" id="genderMale" name="gender" type="radio"><label for="genderMale">Male</label></li>
+										<li><input class="radioBtn" id="genderFemale" name="gender" type="radio"><label for="genderFemale">Female</label></li>
+									</ul>
+								</div>
+								<div class="formRow">
+									<label class="formLabel" for="national">*Nationality:</label>
+									<input class="formInputReq" id="national" name="national" type="text" placeholder="Enter your nationality" required>
+								</div>
+								<div class="formRow">
+									<label class="formLabel" for="dateBirth">*Date of Birth:</label>
+									<input class="formInputReq" id="dateBirth" name="dateBirth" type="date" placeholder="Enter your date of birth" required>
+								</div>								
+							</fieldset>	
+							<fieldset>
+								<legend>Your home address:</legend>
+								<div class="formRow">
+									<label class="formLabel" for="homeAddressStreet">*House and street:</label>
+									<input class="formInputReq" id="homeAddressStreet" name="homeAddressStreet" type="text" placeholder="Enter your house number and street" required>
+								</div>	
+								<div class="formRow">
+									<label class="formLabel" for="homeAddressCity">*Post code, city:</label>
+									<input class="formInputReq" id="homeAddressCity" name="homeAddressCity" type="text" placeholder="Enter your post code and city" required>
+								</div>								
+								<div class="formRow">
+									<label class="formLabel" for="homeAddressProvince">Province/ State:</label>
+									<input class="formInput" id="homeAddressProvince" name="homeAddressProvince" type="text" placeholder="Enter your province/state">
+								</div>	
+								<div class="formRow">
+									<label class="formLabel" for="homeAddressCountry">*Country:</label>
+									<input class="formInputReq" id="homeAddressCountry" name="homeAddressCountry" type="text" placeholder="Enter your country" required>
+								</div>	
+							</fieldset>
+							<fieldset>
+								<legend>Your contact details:</legend>
+								<div class="formRow">
+									<label class="formLabel" for="telephone">*Telephone:</label>
+									<input class="formInputReq" id="telephone" name="telephone" type="tel" placeholder="Enter your telephone no." required>
+								</div>				
+								<div class="formRow">
+									<label class="formLabel" for="email">*Email:</label>
+									<input class="formInputReq" id="email" name="email" type="email" placeholder="Enter your email address" required>
+								</div>
+								<div class="formRow">
+									<label class="formLabel" for="email">*Confirm Email:</label>
+									<input class="formInputReq" id="emailConf" name="emailConf" type="email" placeholder="Enter your email again" required>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend>Your account details:</legend>
+								<div class="formRow">
+									<label class="formLabel" for="username">*Username:</label>
+									<input class="formInputReq" id="username" name="username" type="text" placeholder="Choose your username" required>
+								</div>	
+								<div class="formRow">
+									<label class="formLabel" for="passwordStu">*Password:</label>
+									<input class="formInputReq" id="passwordStu" name="passwordStu" type="password" placeholder="Enter your password" required>
+								</div>				
+								<div class="formRow">
+									<label class="formLabel" for="passwordStu">*Confirm Password:</label>
+									<input class="formInputReq" id="passwordConf" name="passwordConf" type="password" placeholder="Enter your password again" required>
+								</div>							
+							</fieldset>
+							<fieldset>
+								<legend>Your course:</legend>
+								<div class="formRow">
+									<label class="formLabel" for="courseSelect">*Your course:</label>
+									<select class="formSelect" id="courseSelect" name="subject">
+										<option class="formOption" value="" selected>Select course:</option>
+										<optgroup label="General English:">
+											<option class="formOption" value="2 Weeks - Mornings">2 Weeks - Mornings</option>
+											<option class="formOption" value="2 Weeks - Evenings">2 Weeks - Evenings</option>
+											<option class="formOption" value="4 Weeks - Mornings">4 Weeks - Mornings</option>
+											<option class="formOption" value="4 Weeks - Evenings">4 Weeks - Evenings</option>
+											<option class="formOption" value="8 Weeks - Mornings">8 Weeks - Mornings</option>
+											<option class="formOption" value="8 Weeks - Evenings">8 Weeks - Evenings</option>
+											<option class="formOption" value="12 Weeks - Mornings">12 Weeks - Mornings</option>
+											<option class="formOption" value="12 Weeks - Evenings">12 Weeks - Evenings</option>
+										</optgroup>
+										<optgroup label="Exam Preparation:">
+											<option class="formOption" value="IELTS Exam">IELTS Exam</option>
+											<option class="formOption" value="Cambridge Exam">Cambridge Exam</option>
+											<option class="formOption" value="TOEFL Exam">TOEFL Exam</option>
+										</optgroup>	
+										<optgroup label="Academic Year Programme:">
+											<option class="formOption" value="Academic Year Programme">Academic Year Programme</option>
+										</optgroup>
+									</select>
+								</div>								
+								<div class="formRow">
+									<label class="formLabel" for="myCourseStDate_1">*Course start date:</label>
+									<input class="formInputReq" id="myCourseStDate_1" name="myCourseStDate" type="date" required>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend>Accommodation:</legend>
+								<label class="formLabel" for="accommOption">I will stay with:</label>
+								<div class="formRowIndent">
+									<ul class="formList">
+										<li><input class="radioBtn" id="accommOptionHost" name="accommOption" type="radio"><label for="accommOptionHost">Host Family</label></li>
+										<li><input class="radioBtn" id="accommOptionPrivate" name="accommOption" type="radio"><label for="accommOptionPrivate">Private Rental</label></li>
+									</ul>
+								</div>								
+							</fieldset>	
+							<br>
+							<fieldset>
+								<legend>Host Family Preferences:</legend>							
+								<fieldset>
+									<legend>Dietary requirements:</legend>
+									<div class="formRowIndent">
+										<ul class="formList">
+											<li><input class="checkieBox" id="vegetarian" name="diet" type="checkbox"><label for="vegetarian">Vegetarian</label></li>
+											<li><input class="checkieBox" id="halal" name="diet" type="checkbox"><label for="halal">Halal</label></li>
+											<li><input class="checkieBox" id="kosher" name="diet" type="checkbox"><label for="kosher">Kosher</label></li>
+											<li><input class="checkieBox" id="allStuff" name="diet" type="checkbox"><label for="allStuff">None. I eat everything</label></li>
+										</ul>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend>Smoking or not:</legend>
+									<div class="formRowIndent">
+										<ul class="formList">
+											<li><input class="radioBtn" id="smoking" name="smokes" type="radio"><label for="smoking">Smoking</label></li>
+											<li><input class="radioBtn" id="nonSmoking" name="smokes" type="radio"><label for="nonSmoking">Non-smoking</label></li>
+										</ul>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend>Pets or no pets:</legend>
+									<div class="formRowIndent">
+										<ul class="formList">
+											<li><input class="radioBtn" id="yesPets" name="pets" type="radio"><label for="yesPets">Yes! I like pets!</label></li>
+											<li><input class="radioBtn" id="noPets" name="pets" type="radio"><label for="noPets">No pets please!</label></li>
+											<li><input class="radioBtn" id="dontMindPets" name="pets" type="radio"><label for="dontMindPets">Doesn't matter</label></li>
+										</ul>
+									</div>
+								</fieldset>							
+								<fieldset>
+									<legend>Young children:</legend>
+									<div class="formRowIndent">
+										<ul class="formList">
+											<li><input class="radioBtn" id="yesChildren" name="children" type="radio"><label for="yesChildren">Yes! I like children!</label></li>
+											<li><input class="radioBtn" id="noChildren" name="children" type="radio"><label for="noChildren">No children please!</label></li>
+											<li><input class="radioBtn" id="dontMindChildrens" name="children" type="radio"><label for="dontMindChildrens">Doesn't matter</label></li>
+										</ul>
+									</div>
+								</fieldset>	
+								<fieldset>
+									<legend>Other requirements:</legend>
+									<div class="formRow">
+										<label class="formLabel" for="otherRequirements">Other:</label>
+										<textarea class="textField" id="otherRequirements" name="otherRequirements" rows="5" cols="30" placeholder="Enter other requirements here"></textarea>
+									</div>
+								</fieldset>		
+							</fieldset>	
+							<br>
+							<div class="formRowIndent">
+								<input class="formBttn" name="goToGpg" id="goToGpg" type="submit" onclick="" value="Go To Payment">
+								<input class="formBttn" name="saveForLater" id="saveForLater" type="submit" onclick="" value="Save For Later">
+								<input class="formBttn" name="cancel" id="cancelApplication" type="reset" value="Cancel Application">
+							</div>			
+						</form>	 <!-- End of: Form -->						
+
+				</article>
+
+				
+			<a class="backLink" href="@routes.Assets.at("images/Backgrounds/BackHowth.jpg")" data-lightbox="Howth" title="Howth Lighthouse and Dublin Bay - Howth, Co. Dublin">
+				Background image: Howth Lighthouse and Dublin Bay, Howth, Co. Dublin<br>
+				Author: Bart Bula<br>
+				Click here to see the image.
+			</a>
+				
+		</section>
+</body>
+}

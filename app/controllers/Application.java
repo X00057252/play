@@ -35,4 +35,8 @@ public class Application extends Controller {
         return ok(account.render());
 	}
 	
+	public static Result apply() {
+        return ok(apply.render());
+	}
+	
 }

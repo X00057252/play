@@ -43,14 +43,14 @@
 	padding: 0:
 }
 
-#home {background-image: url('../images/Backgrounds/BackCliffsMoher.jpg');}
-#courses {background-image: url('../images/Backgrounds/BackChristchurch.jpg');}
-#accommodation {background-image: url('../images/Backgrounds/BackStephensGreen.jpg');}
-#studentinfo {background-image: url('../images/Backgrounds/BackConnemara.jpg');}
-#visitors {background-image: url('../images/Backgrounds/BackGlenveagh.jpg');}
-#contact {background-image: url('../images/Backgrounds/BackKilkennyCastle.jpg');}
-#account {background-image: url('../images/Backgrounds/BackBective.jpg');}
-#apply {background-image: url('../images/Backgrounds/BackHowth.jpg');}
+#home {background-image: url('../Images/Backgrounds/BackCliffsMoher.jpg');}
+#courses {background-image: url('../Images/Backgrounds/BackChristchurch.jpg');}
+#accommodation {background-image: url('../Images/Backgrounds/BackStephensGreen.jpg');}
+#studentinfo {background-image: url('../Images/Backgrounds/BackConnemara.jpg');}
+#visitors {background-image: url('../Images/Backgrounds/BackGlenveagh.jpg');}
+#contact {background-image: url('../Images/Backgrounds/BackKilkennyCastle.jpg');}
+#account {background-image: url('../Images/Backgrounds/BackBective.jpg');}
+#apply {background-image: url('../Images/Backgrounds/BackHowth.jpg');}
 
 
 /*Making current page selection highlighted on the navigation menu: */	
@@ -658,15 +658,19 @@ legend{
 
 .formSelect{
 	width: 70%;
-	background-color: #FCF9DA;
-	background-image: url(../images/Icons/dwnArr.png); 
+	border-style: solid;
+	border-width: 2px;
+	border-color: #E60000;
+	/*background-color: #FCF9DA;
+	background-image: url(../Images/Icons/dwnArr.png); 
 	background-repeat: no-repeat;	
 	background-size: 1.7em;
 	background-position: 98% 0%;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	appearance: none;	
+	appearance: none;	*/
 }
+
  
 .formList{
     margin: 0;
@@ -686,11 +690,12 @@ legend{
 
 /* ======================= buttons:  */
 
-.formBttn, .loginBttn{
+.formBttn, .loginBttn, .tableBttn{
 	display: inline-block;
-	margin: 0em 1em 0em 0em;
+	margin: .2em 1em .2em 0em;
 	padding: .2em .5em .2em .5em;
 	float: left;
+	text-align: centre;
 	transition: all 0.4s ease;
 	border: 0;
     color: #333;
@@ -705,17 +710,20 @@ legend{
 	font-size: 80%;
 	margin: 0em 0em .1em 7em;	
 }
-a.formBttn, a.formBttn:hover, a.formBttn:focus, a.formBttn:visited{
+.tableBttn{
+	margin: 0;
+}
+a.formBttn, a.formBttn:hover, a.formBttn:focus, a.formBttn:visited, a.tableBttn, a.tableBttn:hover, a.tableBttn:focus, a.tableBttn:visited{
 	text-decoration: none;
 	color: #333;
 }
 
-.formBttn:hover, :focus, .loginBttn:hover, :focus{
+.formBttn:hover, :focus, .loginBttn:hover, :focus, .tableBttn:hover, :focus{
 	background-color: #FDF5AA; 
 	text-decoration: none;
 	transform: scale(1.1); 
 }
-.formBttn:active, .loginBttn:active{
+.formBttn:active, .loginBttn:active, .tableBttn:active{
     background-color: #007C7E;
 	color: #FCF9DA;
 }
@@ -734,6 +742,7 @@ a.formBttn, a.formBttn:hover, a.formBttn:focus, a.formBttn:visited{
 table{
 	display: inline-block;
 	margin: 0em 1em 2em 0em;
+	font-size: 90%;
 	border-collapse: collapse;
 	color: #434242;
 	border-radius: .2em;
