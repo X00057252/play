@@ -34,7 +34,7 @@
 =============================================================*/
 
 #home, #courses, #accommodation, #studentinfo, #visitors, #contact, #account, #apply{   /* pages body id-s */
-	background-color: #5F6008;
+	background-color: #666;
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: 0px 0px;
@@ -97,7 +97,7 @@ body#account nav a#accountNav{
 	margin: 0 0 -3% 0;
 	width: 100%;
 	overflow: auto;
-	font-family: Gidole;
+	font-family: Gidole, Arial, sans-serif;
 	font-size: 120%;
 	color: #333;
 	min-width: 320px;
@@ -170,7 +170,7 @@ nav a {
 	text-decoration: none;
 	font-size: 75%;
 	color: #333;
-	border-radius: .2em;	
+	border-radius: .1em;	
 }
 
 nav a:hover{ 
@@ -215,7 +215,7 @@ section{
 	margin-right: auto;
 	margin-top: 6.5em;
 	padding: 0em 0em .5em 0em;
-	border-radius: .2em;
+	border-radius: .1em;
 	/*border-style: solid;
 	border-width: 1px;
 	border-color: blue;		*/
@@ -283,7 +283,7 @@ footer section{
 	float: right;
 	margin: 5em 2em 0em 0em;
 	padding: .2em .2em .2em .2em;
-	border-radius: .2em;
+	border-radius: .1em;
 	opacity: .9;
 }
 @media screen and (max-width: 378px){
@@ -344,7 +344,7 @@ article{
 	margin: 2em 0em 0em 0em;
 	padding: 1em 1em 0em 1em;
 	width: 100%;
-	border-radius: .2em;
+	border-radius: .1em;
 }
 @media screen and (max-width: 682px){
 	article{
@@ -380,7 +380,7 @@ p{
 
 iframe{
 	border: 1px solid #FCF9DA;
-	border-radius: .5em;
+	border-radius: .1em;
 }
 
 /* ======================= in-text links:   */
@@ -403,7 +403,7 @@ aside{
 	background-color: #FDF5AA;
 	margin: 1em .5em 1em .5em;
 	padding: 0em 1em 1em 1em;
-	border-radius: .2em;
+	border-radius: .1em;
 }
 
 
@@ -450,7 +450,7 @@ h2{
 	font-size: 140%;
 	background-color: #5F6008;
 	color: #FCF9DA;
-	border-radius: .2em;	
+	border-radius: .1em;	
 }
 @media screen and (max-width: 520px) {
 	h2{
@@ -488,7 +488,7 @@ h3{
 	font-size: 120%;
 	background-color: #E9ED75;
 	color: #333;
-	border-radius: .2em;	
+	border-radius: .1em;	
 }
 @media screen and (max-width: 520px) {
 	h3{
@@ -504,7 +504,7 @@ img{
 	margin: 0em 0em 1em 1em;
 	width: 23em;
 	border: 1px solid #FCF9DA;
-	border-radius: .5em;
+	border-radius: .1em;
 }
 @media screen and (max-width: 682px){
 	img{
@@ -538,14 +538,14 @@ footer img{
 
 form{
 	display: block;
-	font-family: Gidole;
+	font-family: Gidole, Arial, sans-serif;
 	color: #333;
 	background-color: #E9ED75;
 	width: 100%;
 	padding: 1em;
 	margin: 0em 0em 1em 0em; 
 	overflow: auto;
-	border-radius: .2em;	
+	border-radius: .1em;	
 }
 
 .loginForm{
@@ -587,12 +587,12 @@ fieldset{
 	border-style: solid;
 	border-width: 2px;
 	border-color: #C9CF4B;
-	border-radius: .5em;
+	border-radius: .1em;
 }
 legend{
 	background-color: #C9CF4B;
 	padding: 0em .5em 0em .5em;
-	border-radius: .2em;	
+	border-radius: .1em;	
 }
 
 /* =======================  labels: */
@@ -620,13 +620,13 @@ legend{
 	padding: 0.2em;
 	margin: 0em;
 	transform: none;
-	font-family: Gidole;
+	font-family: Gidole, Arial, sans-serif;
 	width: 70%;
 	float: left;
 	border: none;
 	background-color: #FCF9DA;
 	font-size: 90%;
-	border-radius: .2em;
+	border-radius: .1em;
 }
 
 .loginInput{
@@ -653,7 +653,7 @@ legend{
 }
 
 .formOption{
-	font-family: Gidole;
+	font-family: Gidole, Arial, sans-serif;
 }
 
 .formSelect{
@@ -703,7 +703,7 @@ legend{
 	border-style: solid;
 	border-width: 1px;
 	border-color: #333;
-	border-radius: .2em;	
+	border-radius: .1em;	
 	font-weight: bold;
 }
 .loginBttn{
@@ -745,7 +745,7 @@ table{
 	font-size: 90%;
 	border-collapse: collapse;
 	color: #434242;
-	border-radius: .2em;
+	border-radius: .1em;
 	border-style: solid;
 	border-width: 2;
 	border-color: #C9CF4B;

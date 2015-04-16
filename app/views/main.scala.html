@@ -23,68 +23,58 @@
 	<div class="mainWrap"> 
 
 
-	<!-- Grey bar at the top of the page to cover the scroll -->	
-	<div class="topBar">
-	<section class="centrColBar">
-		<a href="@routes.Application.index()"> <img class="logoLink" src="@routes.Assets.at("images/logoTop.png")" alt="School Logo" height="80px"> </a>
-	<div class="navDown"></div>
-	<form class="loginForm" action="" method="post" id="loginForm">
-	<div class="formRow">
-		<label class="loginLabel" for="userName">Username:</label>
-		<input class="loginInput" id="userName" name="userName" type="text" required>
-	</div>
-	<div class="formRow">
-		<label class="loginLabel" for="pass">Password:</label>
-		<input class="loginInput" id="pass" name="pass" type="password" required>
-	</div>
-		<input class="loginBttn" name="login" id="loginBtn" type="submit" value="Login" >
-	</form>
-	
-	<nav>
-		<a href="@routes.Application.index()" id="homeNav"> <br> HOME </a>
-		<a href="@routes.Application.courses()" id="courseNav"> <br> COURSES </a>
-		<a href="@routes.Application.accommodation()" id="accNav"> <br> ACCOMMODATION </a>
-		<a href="@routes.Application.studentinfo()" id="infoNav"> <br> STUDENTS INFO </a>
-		<a href="@routes.Application.visitorsguide()" id="visitNav"> <br> VISITORS' GUIDE </a>
-		<a href="@routes.Application.contactus()" id="contactNav"> <br> CONTACT </a>
-		<a href="@routes.Application.account()" id="accountNav"> <br> MY ACCOUNT </a>
-	</nav> <!--mainNav-->
+		<!-- Grey bar at the top of the page to cover the scroll -->	
+		<div class="topBar">
+			<section class="centrColBar">
+				<a href="@routes.Application.index()"> <img class="logoLink" src="@routes.Assets.at("images/logoTop.png")" alt="School Logo" height="80px"> </a>
+			
+				<nav>
+					<a href="@routes.Application.index()" id="homeNav"> <br> HOME </a>
+					<a href="@routes.Application.courses()" id="courseNav"> <br> COURSES </a>
+					<a href="@routes.Application.accommodation()" id="accNav"> <br> ACCOMMODATION </a>
+					<a href="@routes.Application.studentinfo()" id="infoNav"> <br> STUDENTS INFO </a>
+					<a href="@routes.Application.visitorsguide()" id="visitNav"> <br> VISITORS' GUIDE </a>
+					<a href="@routes.Application.contactus()" id="contactNav"> <br> CONTACT </a>
+					<a href="@routes.Application.account()" id="accountNav"> <br> MY ACCOUNT </a>
+				</nav> <!--mainNav-->
 
 
-	</section>	
-	</div>
+			</section>	
+		</div>
 
-	@content
+		@content
 
-	<footer>
-	<section>
-		<article class="FooterArtc">
-		<p>
-		Copyright &copy 2015 - Progress School of English</br>
-		Designed by: <br>
-		Bart Bula, X00107883 <br>
-		Andro Haavandi, X00057252 <br>
-		IT Tallaght.
-		</p>
-		</article>
-		<article class="FooterArtc">
-		<p>
-		Progress School of English</br>
-		4 Somestreet</br>
-		Rathmines</br>
-		Dublin 6</br>
-		Ireland</br>
-		Phone: +353 01 234 5678</br>
-		Email: <a href="mailto:info@@progressschool.ie" target="_top">info@@progressschool.ie</a>				
-		</p>
-		</article>
-		<article class="FooterArtc">
-		<p>
-		<img src="@routes.Assets.at("images/acels-full-gray.png")" alt="ACELS Logo" height="80px">
-		</p>
-		</article>				
-	</section>
-	</footer> <!--footer-->	
+		<footer>
+			<section>
+				<article class="FooterArtc">
+					<p>
+					Copyright &copy 2015 - Progress School of English</br>
+					Designed by: <br>
+					Bart Bula, X00107883 <br>
+					Andro Haavandi, X00057252 <br>
+					IT Tallaght.
+					</p>
+				</article>
+				
+				<article class="FooterArtc">
+					<p>
+					Progress School of English</br>
+					4 Somestreet</br>
+					Rathmines</br>
+					Dublin 6</br>
+					Ireland</br>
+					Phone: +353 01 234 5678</br>
+					Email: <a href="mailto:info@@progressschool.ie" target="_top">info@@progressschool.ie</a>				
+					</p>
+				</article>
+				
+				<article class="FooterArtc">
+					<p>
+					<img src="@routes.Assets.at("images/acels-full-gray.png")" alt="ACELS Logo" height="80px">
+					</p>
+				</article>				
+			</section>
+		</footer> <!--footer-->	
 
 
 </div> 	<!-- End of: mainWrap Main wrapper, includes everything -->
