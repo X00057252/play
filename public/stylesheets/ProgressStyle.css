@@ -72,14 +72,6 @@ body#account nav a#accountNav{
    src: url(Gidole-Regular.otf);  
 } 
 
-
-@media screen and (max-width: 520px){
-	body{
-		font-size: 80%;
-	}
-}
-
-
 * {
   box-sizing: border-box;
 }
@@ -100,7 +92,7 @@ body#account nav a#accountNav{
 	font-family: Gidole, Arial, sans-serif;
 	font-size: 120%;
 	color: #333;
-	min-width: 320px;
+	min-width: 667px;
 }
 
 .topBar{
@@ -133,21 +125,14 @@ body#account nav a#accountNav{
 	border-width: 1px;
 	border-color: blue;		*/
 }
-@media screen and (max-width: 1350px){
-	.navDown{
-		width: 20%;
-	}
-}
-@media screen and (max-width: 850px) {
-	.navDown{
-		width: 0;
-	}
-}
+
+
 nav{
 	display: inline-block;
 	margin-top: .2em;
 	float: left;	
 	font-weight: bold;
+	
 	/*border-style: solid;
 	border-width: 1px;
 	border-color: blue;		*/
@@ -216,32 +201,21 @@ section{
 	margin-top: 6.5em;
 	padding: 0em 0em .5em 0em;
 	border-radius: .1em;
+	min-width: 665px;
 	/*border-style: solid;
 	border-width: 1px;
 	border-color: blue;		*/
 }
-@media screen and (max-width: 1578px) {
+
+@media screen and (max-width: 1249px) {
 	section{
 		margin-top: 8.5em;
 	}
 }
-@media screen and (max-width: 948px) {
-	section{
-		width: 98%;
-	}
-}
 
-@media screen and (max-width: 682px){
-	section{
-		margin-top: 10.7em;
-		width: 98%;
-	}
-}
-@media screen and (max-width: 378px){
-	section{
-		margin-top: 15.5em;
-	}
-}
+
+
+
 footer section{
 	margin-top: 0;
 }
@@ -250,8 +224,9 @@ footer section{
 	display: inline-block;
 	margin: 0;
 	width: 48.5%;
+	min-width: 0;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1460px) {
 	.sectionNarrow{
 		width: 100%;
 	}
@@ -262,8 +237,9 @@ footer section{
 	display: inline-block;
 	margin: 0;
 	width: 48.5%;	
+	min-width: 0;	
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1460px) {
 	.sectionNarrowRight{
 		width: 100%;
 	}
@@ -286,11 +262,7 @@ footer section{
 	border-radius: .1em;
 	opacity: .9;
 }
-@media screen and (max-width: 378px){
-	.backLink, .backLink:active{
-		margin-top: .5em;
-	}
-}
+
 .backLink:hover {
 	color: #C9CF4B;	
 }
@@ -327,11 +299,7 @@ footer{
 	}
 }
 
-@media screen and (max-width: 682px) {
-	.FooterArtc{
-		width: 100%;
-	}
-}
+
 
 
 /* ======================= article box   */
@@ -346,16 +314,7 @@ article{
 	width: 100%;
 	border-radius: .1em;
 }
-@media screen and (max-width: 682px){
-	article{
-		margin-top: .5em;
-	}
-}
-@media screen and (max-width: 520px) {
-	article{
-		padding: .2em;
-	}
-}
+
 
 .wideArticle{
 	width: 100%;
@@ -490,11 +449,7 @@ h3{
 	color: #333;
 	border-radius: .1em;	
 }
-@media screen and (max-width: 520px) {
-	h3{
-		margin-bottom: .3em;
-	}
-}
+
 
 /* ======================= photos:   */
 
@@ -506,12 +461,7 @@ img{
 	border: 1px solid #FCF9DA;
 	border-radius: .1em;
 }
-@media screen and (max-width: 682px){
-	img{
-		margin: .5em 0em 1em 0em;
-		width: 100%;
-	}
-}
+
 
 footer img{
 	width: auto;
@@ -520,6 +470,7 @@ footer img{
 .imgWide, .imgWideLink{
 	width: 100%;
 	margin: .5em 0em 1em 0em;
+	max-width: 640px;
 }
 
 .imgWideLink:hover{
@@ -529,7 +480,7 @@ footer img{
 
 /*===========================================================
 
-	FORMS - INCLUDING LOGIN 
+	FORMS 
 	
 =============================================================*/
 
@@ -548,24 +499,6 @@ form{
 	border-radius: .1em;	
 }
 
-.loginForm{
-	display: inline-block;
-	padding: 0em 0em .2em 0em;
-	margin: 0;
-	width: 15em;
-	float: right;
-	font-size: 80%;
-	height: 6em;
-	/*border-style: solid;
-	border-width: 1px;
-	border-color: blue;	*/	
-}
-@media screen and (max-width: 378px){
-	.loginForm{
-		float: left;
-		width: 100%;
-	}
-}
 
 .formRow{ 
 	display: block;
@@ -597,7 +530,7 @@ legend{
 
 /* =======================  labels: */
 
-.formLabel, .loginLabel{
+.formLabel{
 	display: inline-block;
 	padding: .1em 0em 0em 0em;
 	width: 28%;
@@ -605,9 +538,7 @@ legend{
 	text-align: right;
 	float: left;
 }
-.loginLabel{
-	width: 5em;
-}
+
 
 
 
@@ -615,7 +546,7 @@ legend{
 
 /* ======================= inputs: */
 
-.formInput, .loginInput, .formInputReq, .formSelect, .textField{
+.formInput, .formInputReq, .formSelect, .textField{
 	display: inline-block;
 	padding: 0.2em;
 	margin: 0em;
@@ -629,19 +560,8 @@ legend{
 	border-radius: .1em;
 }
 
-.loginInput{
-	margin: 0;
-	width: 10.5em; 
-	float: right;
-}
-@media screen and (max-width: 378px){
-	.loginInput{
-		float: left;
-		margin-left: .5em;
-		width: 70%;
-	}
-}
-.formInput:focus, .loginInput:focus, .formInputReq:focus, .formSelect:focus, .textField:focus{
+
+.formInput:focus, .formInputReq:focus, .formSelect:focus, .textField:focus{
 	background-color: #FCF9DA;
 	transform: scale(1);
 }
@@ -690,7 +610,7 @@ legend{
 
 /* ======================= buttons:  */
 
-.formBttn, .loginBttn, .tableBttn{
+.formBttn, .tableBttn{
 	display: inline-block;
 	margin: .2em 1em .2em 0em;
 	padding: .2em .5em .2em .5em;
@@ -706,10 +626,6 @@ legend{
 	border-radius: .1em;	
 	font-weight: bold;
 }
-.loginBttn{
-	font-size: 80%;
-	margin: 0em 0em .1em 7em;	
-}
 .tableBttn{
 	margin: 0;
 }
@@ -718,12 +634,12 @@ a.formBttn, a.formBttn:hover, a.formBttn:focus, a.formBttn:visited, a.tableBttn,
 	color: #333;
 }
 
-.formBttn:hover, :focus, .loginBttn:hover, :focus, .tableBttn:hover, :focus{
+.formBttn:hover, :focus, .tableBttn:hover, :focus{
 	background-color: #FDF5AA; 
 	text-decoration: none;
 	transform: scale(1.1); 
 }
-.formBttn:active, .loginBttn:active, .tableBttn:active{
+.formBttn:active, .tableBttn:active{
     background-color: #007C7E;
 	color: #FCF9DA;
 }
@@ -741,7 +657,7 @@ a.formBttn, a.formBttn:hover, a.formBttn:focus, a.formBttn:visited, a.tableBttn,
 
 table{
 	display: inline-block;
-	margin: 0em 1em 2em 0em;
+	margin: 0em 0em 2em 0em;
 	font-size: 90%;
 	border-collapse: collapse;
 	color: #434242;
@@ -752,7 +668,7 @@ table{
 }
 tr{
 	vertical-align: middle;
-	padding: .4em 1em .4em 1em;
+	padding: .4em .5em .4em .5em;
 }
 tr.darkRow{
 	background-color: #FDF5AA;
@@ -762,19 +678,15 @@ th{
     background-color: #C9CF4B;
 	text-align: left;
 	height: 2em;
-	padding: .4em 1em .4em 1em;
+	padding: .4em .5em .4em .5em;
 	vertical-align: middle;
 }
 
 /* in-cell text alignment classes:  */
 td{
-	padding: .4em 1em .4em 1em;
+	padding: .4em .5em .4em .5em;
 }
-@media screen and (max-width: 520px) {
-	tr, th, td{
-		padding: .2em .3em .2em .3em;
-	}
-}
+
 .toRight{  
 	text-align: right;
  
