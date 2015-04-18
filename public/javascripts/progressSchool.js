@@ -1,19 +1,22 @@
 
 
 
-//===========================================================
-//
-//		IT Tallaght, Bart Bula, X00107883, March 2015 
-//
-//=========================================================== 
+/* ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+=========================================================== */
 
 
 
 
 
-// Governing read more/less links in articles: --
-// 		shID+'show' - "Read more" link
-//		shID - Hidden section            
+/* Governing read more/less links in articles: --
+ 		shID+'show' - "Read more" link
+		shID - Hidden section          */  
 
 function showHide(shID) {
 	var top = document.getElementById(shID+'-top').offsetTop; //Getting Y of top of article
@@ -125,16 +128,6 @@ function emailCheck(input) {
 
 
 
-
-// Change size of the font: --
-
-function resizeFont(newSize) {
-  if (document.body.style.fontSize == "") {
-    document.body.style.fontSize = "1.0em";
-  }
-  document.body.style.fontSize = parseFloat(newSize) + "em";
-}
-// End of: Change size of the font --
 
 
 
