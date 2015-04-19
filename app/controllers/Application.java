@@ -38,5 +38,13 @@ public class Application extends Controller {
 	public static Result apply() {
         return ok(apply.render());
 	}
+
+	public static Result loginscreen() {
+        return ok(loginscreen.render());
+	}
+
+	public static Result paymentgpg() {
+        return ok(paymentgpg.render());
+	}
 	
 }

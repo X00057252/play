@@ -50,7 +50,7 @@
 #visitors {background-image: url('../images/Backgrounds/BackGlenveagh.jpg');}
 #contact {background-image: url('../images/Backgrounds/BackKilkennyCastle.jpg');}
 #account, #loginscreen {background-image: url('../images/Backgrounds/BackBective.jpg');}
-#apply {background-image: url('../images/Backgrounds/BackHowth.jpg');}
+#apply , #paymentgpg{background-image: url('../images/Backgrounds/BackHowth.jpg');}
 
 
 /*Making current page selection highlighted on the navigation menu: */	
@@ -63,7 +63,8 @@ body#visitors nav a#visitNav,
 body#contact nav a#contactNav,
 body#account nav a#accountNav
 body#loginscreen nav a#accountNav
-body#apply nav a#accountNav {
+body#apply nav a#accountNav 
+body#paymentgpg nav a#accountNav{
 	background: #007C7E;	
 	color: #FCF9DA;
 }
