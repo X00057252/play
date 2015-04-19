@@ -1,11 +1,41 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+// Import data base classes:
+import models.Course;
+import models.Event;
+import models.Student;
+import models.StuCourse;
+import models.StuEvent;
 
+// Play Framework dependencies:
+import play.data.Form;
+import play.mvc.Result;
+import play.mvc.Controller;
+
+// Import the view templates:
 import views.html.*;
 
+// Import ORM dependencies:
+import java.util.List;
+import com.avaje.ebean.*;
+
+
+
 public class Application extends Controller {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static Result index() {
         return ok(index.render());
