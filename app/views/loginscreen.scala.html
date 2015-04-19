@@ -1,0 +1,62 @@
+@main("Login") {
+
+<!-- ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+=========================================================== -->
+
+<body id="loginscreen">
+ 
+		
+		<section>
+
+				<article class="wideArticle">
+					<h3> Login to your account </h3>
+					<p>
+						Fill in your login details below to go to your account page.
+					</p>					
+			
+					<form class="loginForm" action="" method="post" id="loginForm">
+						<br><br>
+						<div class="formRow">
+							<label class="formLabel" for="userName">Username:</label>
+							<input class="loginInput" id="userName" name="userName" type="text" required>
+						</div>
+						<div class="formRow">
+							<label class="formLabel" for="pass">Password:</label>
+							<input class="loginInput" id="pass" name="pass" type="password" required>
+						</div>
+						<br>
+						<div class="formRowIndent">
+							<input class="formBttn" name="login" id="loginBtn" type="submit" value="Login">
+						</div>	
+						<br><br>							
+					</form>				
+					<h4> Don't have an account? </h4>
+					<p>
+						<a href="@routes.Application.apply.html()">Click here to apply for a course and create an account.</a>
+					</p>				
+					<br>
+				</article>
+
+			
+			
+			
+
+			
+			
+			<a class="backLink" href="Images/Backgrounds/BackChristchurch.jpg" data-lightbox="Christchurch" title="Christchurch Cathedral - Dublin">
+				Background image: Christchurch Cathedral, Dublin<br>
+				Author: Bart Bula<br>
+				Click here to see the image.
+			</a>
+			
+		</section>
+	
+</body>
+ 
+} 
