@@ -48,7 +48,7 @@ public class Course extends Model {
     this.courseDescription = courseDescription;
     this.courseMornEvn = courseMornEvn;
     if (coursePPW < 0) {
-		this.coursePPW = 0;
+		this.coursePPW = 0.0;
 	}
 	else {
 		this.coursePPW = coursePPW;

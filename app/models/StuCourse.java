@@ -37,7 +37,7 @@ public class StuCourse extends Model {
  @Constraints.Required
   public String courseLevel; 
  @Constraints.Required
-  public Int courseAttendance; // int 1 to 100 indicates % of attendance
+  public int courseAttendance; // int 1 to 100 indicates % of attendance
  @Constraints.Required
   public String courseAccommodation;  // host family or private rental
  @Constraints.Required
@@ -48,7 +48,7 @@ public class StuCourse extends Model {
 
   public StuCourse(Long studentId, Long courseId, String courseStatus, 
 				   String courseStartDate, String courseEndDate,
-				   String courseLevel, Int courseAttendance, String courseAccommodation,
+				   String courseLevel, int courseAttendance, String courseAccommodation,
 				   Boolean courseIsPaid) {
     this.studentId = studentId;
     this.courseId = courseId;
