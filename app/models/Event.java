@@ -10,7 +10,7 @@ import play.db.ebean.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import jave.util.*;
+import java.util.*;
 
 // annotate to mark this class as an entity
 // It will be mapped to a Event table in DB
@@ -34,16 +34,16 @@ public class Event extends Model {
  @Constraints.Required
   public String eventTime;
  @Constraints.Required
-  public Int eventMaxCapacity;  
+  public int eventMaxCapacity;  
   @Constraints.Required
-  public Int eventCurrCapacity; 
+  public int eventCurrCapacity; 
  
   
   public Event() {
   }
 
   public Event(String eventName, String eventDescription, String eventDate, String eventTime,
-			   Int eventMaxCapacity, Int eventCurrCapacity) {
+			   int eventMaxCapacity, int eventCurrCapacity) {
     this.eventName = eventName;
     this.eventDescription = eventDescription;
     this.eventDate = eventDate;

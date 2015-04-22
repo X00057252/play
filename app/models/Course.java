@@ -33,7 +33,7 @@ public class Course extends Model {
  @Constraints.Required
   public String courseMornEvn;  // are classes on mornings or evening
  @Constraints.Required
-  public Int courseLength;  // length in weeks
+  public int courseLength;  // length in weeks
  @Constraints.Required
   public Double coursePPW;  //price per week
  
@@ -43,7 +43,7 @@ public class Course extends Model {
 
   public Course(String courseType, String courseName, String courseDescription,
 				String courseMornEvn, Double coursePPW){
-    this.courseType = fircourseType;
+    this.courseType = courseType;
     this.courseName = courseName;
     this.courseDescription = courseDescription;
     this.courseMornEvn = courseMornEvn;
