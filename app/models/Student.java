@@ -1,7 +1,20 @@
+/* ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+   =========================================================== 
+*/
+
+
+
 package models;
 
 // import Play Framework Validation class
 import play.data.validation.Constraints;
+import play.data.format.Formats;
 
 // import Java persistence and ebean:
 import javax.persistence.*;
@@ -10,6 +23,7 @@ import play.db.ebean.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 // annotate to mark this class as an entity
 // It will be mapped to a Student table in DB
@@ -40,7 +54,8 @@ public class Student extends Model {
  @Constraints.Required
   public String studentNationality;
  @Constraints.Required
-  public String studentDOB; 
+ @Formats.DateTime(pattern="dd/MM/yyyy")
+  public Date studentDOB; 
  @Constraints.Required
 // address: 
   public String studentStreet;  
@@ -62,7 +77,7 @@ public class Student extends Model {
 
   public Student(String studentUsername, String studentPassword, 
 			     String studentFName, String studentLName, String studentGender,
-				 String studentNationality, String studentDOB,
+				 String studentNationality, Date studentDOB,
 				 String studentStreet, String studentCity, String studentProvince, String studentCountry,
 				 String studentPhone, String studentEmail) {
     this.studentUsername = studentUsername;

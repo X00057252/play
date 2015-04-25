@@ -1,3 +1,6 @@
+@(genCourses: List[Course], examCourses: List[Course], acYear: List[Course]) 
+@import helper._
+
 @main("Courses") {
 
 <!-- ===========================================================
@@ -62,70 +65,29 @@
 							You will take the level placement test at the beginning of the course and every 2 weeks afterwards. 
 						</p>
 						<h3> General English course price-list </h3>
+						<!-- Header row -->
 						<table>
-							<tr>
-								<th class="toLeft">Course Type</th>
-								<th class="toRight">Course Length</th>
-								<th class="toRight">Price per Week</th>		
-								<th class="toRight">Total Price</th>
-								<th class="ToLeft">&nbsp;</th>
-							</tr>
-							<tr>
-								<td class="toLeft">Morning: Classes 9.30-13.30</td>
-								<td class="toRight">2 weeks</td>
-								<td class="toRight">&#8364; 195</td>		
-								<td class="toRight">&#8364; 390</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr class="darkRow">
-								<td class="toLeft">Evening: Classes 18:00-21.00</td>
-								<td class="toRight">2 weeks</td>
-								<td class="toRight">&#8364; 180</td>		
-								<td class="toRight">&#8364; 360</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr>
-								<td class="toLeft">Morning: Classes 9.30-13.30</td>
-								<td class="toRight">4 weeks</td>
-								<td class="toRight">&#8364; 185</td>		
-								<td class="toRight">&#8364; 740</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr class="darkRow">
-								<td class="toLeft">Evening: Classes 18:00-21.00</td>
-								<td class="toRight">4 weeks</td>
-								<td class="toRight">&#8364; 170</td>		
-								<td class="toRight">&#8364; 680</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr>
-								<td class="toLeft">Morning: Classes 9.30-13.30</td>
-								<td class="toRight">8 weeks</td>
-								<td class="toRight">&#8364; 175</td>		
-								<td class="toRight">&#8364; 1400</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr class="darkRow">
-								<td class="toLeft">Evening: Classes 18:00-21.00</td>
-								<td class="toRight">8 weeks</td>
-								<td class="toRight">&#8364; 160</td>		
-								<td class="toRight">&#8364; 1280</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr>
-								<td class="toLeft">Morning: Classes 9.30-13.30</td>
-								<td class="toRight">12 weeks</td>
-								<td class="toRight">&#8364; 165</td>		
-								<td class="toRight">&#8364; 1980</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr class="darkRow">
-								<td class="toLeft">Evening: Classes 18:00-21.00</td>
-								<td class="toRight">12 weeks</td>
-								<td class="toRight">&#8364; 150</td>		
-								<td class="toRight">&#8364; 1800</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
+							<thead>
+								<tr>
+									<th class="toLeft">Class Times</th>
+									<th class="toRight">Course Length</th>
+									<th class="toRight">Price per Week</th>		
+									<th class="toRight">Total Price</th>
+									<th class="ToLeft">&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Loop through general courses list and display -->
+								@for(course <- genCourses) {
+								<tr>
+									<td class="toLeft">@course.courseMornEvn</td>
+									<td class="toRight">@course.courseLength weeks</td>
+									<td class="toRight">&#8364; @course.coursePPW</td>		
+									<td class="toRight">&#8364; @(course.coursePPW*course.courseLength)</td>
+									<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
+								</tr>
+								} 
+							</tbody>
 						</table>
 						<!-- "Hide" link -->
 						<p>
@@ -157,20 +119,27 @@
 						</p>
 						<h3> Academic Year Programme prices </h3>
 						<table>
-							<tr>
-								<th class="toLeft">Course Type</th>
-								<th class="toRight">Course Length</th>
-								<th class="toRight">Price per Week</th>		
-								<th class="toRight">Total Price</th>
-								<th class="ToLeft">&nbsp;</th>
-							</tr>
-							<tr>
-								<td class="toLeft">Academic Year Programme</td>
-								<td class="toRight">25 weeks course</br> + 27 weeks holidays</td>
-								<td class="toRight">&#8364; 100</td>		
-								<td class="toRight">&#8364; 2500</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
+							<thead>
+								<tr>
+									<th class="toLeft">Description</th>
+									<th class="toRight">Class Times</th>
+									<th class="toRight">Price per Week</th>		
+									<th class="toRight">Total Price</th>
+									<th class="ToLeft">&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Loop through academic year programmes list and display -->
+								@for(course <- acYear) {
+								<tr>
+									<td class="toLeft">@course.courseDescription</td>
+									<td class="toRight">@course.courseMornEvn</td>
+									<td class="toRight">&#8364; @course.coursePPW</td>		
+									<td class="toRight">&#8364; @(course.courseLength*course.coursePPW)</td>
+									<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
+								</tr>
+								} 
+							</tbody>
 						</table>				
 						<!-- "Hide" link -->
 						<p>
@@ -210,34 +179,27 @@
 						</p>
 						<h3> Exam Preparation courses price-list </h3>						
 						<table>
-							<tr>
-								<th class="toLeft">Course Type</th>
-								<th class="toRight">Course Length</th>
-								<th class="toRight">Price per Week</th>		
-								<th class="toRight">Total Price</th>
-								<th class="ToLeft">&nbsp;</th>
-							</tr>
-							<tr>
-								<td class="toLeft">IELTS exam preparation</td>
-								<td class="toRight">4 weeks</td>
-								<td class="toRight">&#8364;</td>		
-								<td class="toRight">&#8364;</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr class="darkRow">
-								<td class="toLeft">Cambridge exam preparation</td>
-								<td class="toRight">4 weeks</td>
-								<td class="toRight">&#8364;</td>		
-								<td class="toRight">&#8364;</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
-							<tr>
-								<td class="toLeft">TOEFL exam preparation</td>
-								<td class="toRight">4 weeks</td>
-								<td class="toRight">&#8364;</td>		
-								<td class="toRight">&#8364;</td>
-								<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
-							</tr>
+							<thead>
+								<tr>
+									<th class="toLeft">Class Times</th>
+									<th class="toRight">Course Length</th>
+									<th class="toRight">Price per Week</th>		
+									<th class="toRight">Total Price</th>
+									<th class="ToLeft">&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Loop through exam preparation courses list and display -->
+								@for(course <- examCourses) {
+								<tr>
+									<td class="toLeft">@course.courseMornEvn</td>
+									<td class="toRight">@course.courseLength weeks</td>
+									<td class="toRight">&#8364; @course.coursePPW</td>		
+									<td class="toRight">&#8364; @(course.courseLength*course.coursePPW)</td>
+									<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
+								</tr>
+								} 
+							</tbody>
 						</table>
 						<!-- "Hide" link -->
 						<p>

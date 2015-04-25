@@ -1,7 +1,21 @@
+/* ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+   =========================================================== 
+*/
+
+
+
+
 package models;
 
 // import Play Framework Validation class
 import play.data.validation.Constraints;
+import play.data.format.Formats;
 
 // import Java persistence and ebean:
 import javax.persistence.*;
@@ -10,6 +24,8 @@ import play.db.ebean.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
+
 
 // annotate to mark this class as an entity
 // It will be mapped to a StuEvent table in DB

@@ -1,7 +1,20 @@
+/* ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+   =========================================================== 
+*/
+
+
+
 package models;
 
 // import Play Framework Validation class
 import play.data.validation.Constraints;
+import play.data.format.Formats;
 
 // import Java persistence and ebean:
 import javax.persistence.*;
@@ -10,6 +23,8 @@ import play.db.ebean.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
+
 
 // annotate to mark this class as an entity
 // It will be mapped to a StuCourse table in DB
@@ -31,9 +46,11 @@ public class StuCourse extends Model {
  @Constraints.Required
   public String courseStatus;
  @Constraints.Required
-  public String courseStartDate;
+ @Formats.DateTime(pattern="dd/MM/yyyy")
+  public Date courseStartDate;
  @Constraints.Required
-  public String courseEndDate; 
+ @Formats.DateTime(pattern="dd/MM/yyyy") 
+  public Date courseEndDate; 
  @Constraints.Required
   public String courseLevel; 
  @Constraints.Required
@@ -47,7 +64,7 @@ public class StuCourse extends Model {
   }
 
   public StuCourse(Long studentId, Long courseId, String courseStatus, 
-				   String courseStartDate, String courseEndDate,
+				   Date courseStartDate, Date courseEndDate,
 				   String courseLevel, int courseAttendance, String courseAccommodation,
 				   Boolean courseIsPaid) {
     this.studentId = studentId;
@@ -70,8 +87,10 @@ public class StuCourse extends Model {
   
   // Call the find.all() method of StuCourse (inherited from the Ebean Model)
   // Return the list of StuCourses found in the database
-  public static List<StuCourse> findAll() {
-    return StuCourse.find.all();
+  public static List<StuCourse> findStuCourse(Long iStudent) {
+    return StuCourse.find.where()
+		.eq("studentId", iStudent)
+	.findList();
   }
 
   

@@ -1,7 +1,20 @@
+/* ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+   =========================================================== 
+*/
+
+
+
 package models;
 
 // import Play Framework Validation class
 import play.data.validation.Constraints;
+import play.data.format.Formats;
 
 // import Java persistence and ebean:
 import javax.persistence.*;
@@ -28,24 +41,30 @@ public class Event extends Model {
  @Constraints.Required
   public String eventName;
  @Constraints.Required
-  public String eventDescription;
+  public String eventDescription1;
+  public String eventDescription2;
+  public String eventDescription3;   
  @Constraints.Required
-  public String eventDate;
+ @Formats.DateTime(pattern="dd/MM/yyyy")
+  public Date eventDate;
  @Constraints.Required
   public String eventTime;
  @Constraints.Required
   public int eventMaxCapacity;  
   @Constraints.Required
   public int eventCurrCapacity; 
- 
+
   
   public Event() {
   }
 
-  public Event(String eventName, String eventDescription, String eventDate, String eventTime,
+  public Event(String eventName, String eventDescription1, String eventDescription2, 
+			   String eventDescription3, Date eventDate, String eventTime,
 			   int eventMaxCapacity, int eventCurrCapacity) {
     this.eventName = eventName;
-    this.eventDescription = eventDescription;
+    this.eventDescription1 = eventDescription1;
+    this.eventDescription2 = eventDescription2;
+    this.eventDescription3 = eventDescription3;
     this.eventDate = eventDate;
     this.eventTime = eventTime;
     this.eventMaxCapacity = eventMaxCapacity;
@@ -59,13 +78,16 @@ public class Event extends Model {
   // It specifies that Events are identified by the Id field (which is of type Long).
   public static Finder<Long, Event> find = new Finder<Long, Event>(Long.class, Event.class);
   
-  // Call the find.all() method of Event (inherited from the Ebean Model)
-  // Return the list of Events found in the database
-  public static List<Event> findAll() {
-    return Event.find.all();
+
+  // Return the future event:
+  public static List<Event> findEvent() {
+	Date today = new Date(); 
+	
+	return Event.find.where()
+		.gt("eventDate", today)
+	.findList();
   }
 
-  
-  
+
   
 }

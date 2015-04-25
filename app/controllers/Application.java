@@ -1,3 +1,15 @@
+/* ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+   =========================================================== 
+*/
+
+
+
 package controllers;
 
 // Import data base classes:
@@ -28,10 +40,6 @@ public class Application extends Controller {
         return ok(index.render());
     }
 
-	public static Result courses() {
-        return ok(courses.render());
-	}
-	
 	public static Result accommodation() {
         return ok(accommodation.render());
 	}
@@ -49,7 +57,12 @@ public class Application extends Controller {
 	}
 	
 	public static Result account() {
-        return ok(account.render());
+	
+		//retrieve event:
+		List<Event> currentEvent = Event.findEvent();
+		List<StuCourse> myCourses = StuCourse.findStuCourse(1L);
+		
+        return ok(account.render(myCourses, currentEvent));
 	}
 	
 	public static Result apply() {
@@ -63,5 +76,19 @@ public class Application extends Controller {
 	public static Result paymentgpg() {
         return ok(paymentgpg.render());
 	}
+	
+	public static Result courses(){
+	
+		//retrieve list of courses: 
+		List<Course> genList = Course.findGeneral(); //general english
+		List<Course> examList = Course.findExamPrep(); //exam preparation
+		List<Course> acYearList = Course.findAcYear(); //academic year
+		
+		
+		//render the view, pass all Course list as parameters:
+		return ok(courses.render(genList,examList,acYearList));
+	}
+	
+	
 	
 }

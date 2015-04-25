@@ -668,16 +668,14 @@ table{
 	border-collapse: collapse;
 	color: #434242;
 	border-radius: .1em;
-	border-style: solid;
-	border-width: 2;
-	border-color: #C9CF4B;
 }
+
 tr{
 	vertical-align: middle;
 	padding: .4em .5em .4em .5em;
-}
-tr.darkRow{
-	background-color: #FDF5AA;
+	border-style: solid;
+	border-width: 2;
+	border-color: #C9CF4B;
 }
 
 th{
@@ -686,6 +684,9 @@ th{
 	height: 2em;
 	padding: .4em .5em .4em .5em;
 	vertical-align: middle;
+	border-style: solid;
+	border-width: 2;
+	border-color: #C9CF4B;
 }
 
 /* in-cell text alignment classes:  */

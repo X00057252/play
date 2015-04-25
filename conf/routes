@@ -1,3 +1,15 @@
+# -- ===========================================================
+# --
+# --	IT Tallaght, 
+# --	Bart Bula, X00107883, 
+# --	Andro Haavandi, X00057252
+# --	April 2015 
+# --
+# -- =========================================================== 
+
+
+
+
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
@@ -31,6 +43,7 @@ GET     /loginscreen                controllers.Application.loginscreen()
 
 # Mock GPG response page
 GET     /paymentgpg                 controllers.Application.paymentgpg()
+
 
 
 

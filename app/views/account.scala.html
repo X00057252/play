@@ -1,3 +1,7 @@
+@(mycourses: List[StuCourse], events: List[Event]) 
+@import helper._
+
+
 @main("Account") {
 
 <!-- ===========================================================
@@ -147,16 +151,17 @@
 						Here are also course applications that you haven't completed yet. You can complete them when you're ready. 
 					</p>
 					
+					@for(mycourse <- mycourses) {
 					<article class="innerArticle">
-						<div class="innerArticle" id="hiddyCourse1-top">
-							<h3> Course name in header
+						<div class="innerArticle" id="hiddyCourse@mycourse.stuCourseId-top">
+							<h3> Course name in header (to do)
 								<!-- read more link -->
-								<a href="#" id="hiddyCourse1-show" class="showLink" onclick="showHide('hiddyCourse1');return false;">Read more &#8659; </a>
+								<a href="#" id="hiddyCourse@mycourse.stuCourseId-show" class="showLink" onclick="showHide('hiddyCourse@mycourse.stuCourseId');return false;">Read more &#8659; </a>
 							</h3>
 						</div> <!-- End of Open part -->						
-						<div id="hiddyCourse1" class="sectHidd"> <!-- Hidden part -->
+						<div id="hiddyCourse@mycourse.stuCourseId" class="sectHidd"> <!-- Hidden part -->
 							<aside>
-								<h4>Course description:</h4>
+								<h4>Course description: (to do)</h4>
 								<p>
 									Here will be course description. Table below provides info about course/results etc.
 									This is a finished course, so no further edits possible.
@@ -165,135 +170,65 @@
 							<table>
 								<tr>
 									<th class="toLeft">Course Status:</th>
-									<th class="toRight">Completed</th>
+									<th class="toRight">@mycourse.courseStatus</th>
 									<th class="toRight">&nbsp;</th>		
 								</tr>
 								<tr>
 									<td class="toLeft">Price per week:</td>
-									<td class="toRight">&#8364; 175</td>
+									<td class="toRight">&#8364; to do</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>
 								<tr class="darkRow">
 									<td class="toLeft">Total price:</td>
-									<td class="toRight">&#8364; 9982</td>
+									<td class="toRight">&#8364; to do</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>									
 								<tr>
 									<td class="toLeft">Course length:</td>
-									<td class="toRight">8 weeks</td>
+									<td class="toRight">to do</td>
 									<td class="toRight">&nbsp;</td>		
 								</tr>
 								<tr class="darkRow">
 									<td class="toLeft">Start date:</td>
-									<td class="toRight">30 Feb 2013</td>
+									<td class="toRight">@mycourse.courseStartDate.format("dd MMM yyyy")</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>
 								<tr>
 									<td class="toLeft">End date:</td>
-									<td class="toRight">31 Apr 2013</td>
+									<td class="toRight">@mycourse.courseEndDate.format("dd MMM yyyy")</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>									
 								<tr class="darkRow">
 									<td class="toLeft">Level attained:</td>
-									<td class="toRight">Upper intermediate</td>
+									<td class="toRight">@mycourse.courseLevel</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>
 								<tr>
 									<td class="toLeft">Attendance:</td>
-									<td class="toRight">96%</td>
+									<td class="toRight">@mycourse.courseAttendance %</td>
 									<td class="toRight">&nbsp;</td>
 								</tr>
 								<tr class="darkRow">
 									<td class="toLeft">Accommodation:</td>
-									<td class="toRight">Host family</td>
+									<td class="toRight">@mycourse.courseAccommodation</td>
 									<td class="toRight">&nbsp;</td>
 								</tr>
-							</table>								
+							</table>	
+							@if(mycourse.courseStatus.equals("Saved for later")) {
+							<div class="formRowIndent">	
+								<a class="formBttn" href="@routes.Application.apply()">Continue application</a>
+								<a class="formBttn" href="">Delete application</a>
+							</div>	
+							}
 							<!-- "Hide" link -->
 							<p>
-								<a href="#" id="hiddyCourse1-hide" class="hideLink" onclick="showHide('hiddyCourse1');return false;">Hide &#8657; </a>
+								<a href="#" id="hiddyCourse@mycourse.stuCourseId-hide" class="hideLink" onclick="showHide('hiddyCourse@mycourse.stuCourseId');return false;">Hide &#8657; </a>
 							</p>
 						</div>
 					</article>						
-						
+					} <!-- end of my course display -->	
 
 						
-					<article class="innerArticle">
-						<div class="innerArticle" id="hiddyCourse2-top">
-							<h3> Course name in header
-								<!-- read more link -->
-								<a href="#" id="hiddyCourse2-show" class="showLink" onclick="showHide('hiddyCourse2');return false;">Read more &#8659; </a>
-							</h3>
-						</div> <!-- End of Open part -->						
-						<div id="hiddyCourse2" class="sectHidd"> <!-- Hidden part -->
-							<aside>
-								<h4>Course description:</h4>
-								<p>
-									This is another course application that is not submitted yet.
-									Fields with buttons in the rightmost column indicate where info can be edited.
-								</p>
-								<p>
-									Or is it better to have it as a form? Or some other, separate application page?
-								</p>
-							</aside>
-							<table>
-								<tr>
-									<th class="toLeft">Course Status:</th>
-									<th class="toRight">Application in progress</th>
-									<th class="toRight">&nbsp;</th>		
-								</tr>
-								<tr>
-									<td class="toLeft">Price per week:</td>
-									<td class="toRight">&#8364; 175</td>
-									<td class="toRight">&nbsp;</td>	
-								</tr>
-								<tr class="darkRow">
-									<td class="toLeft">Total price:</td>
-									<td class="toRight">&#8364; 9982</td>
-									<td class="toRight"><a class="formBttn" href="apply.html">Pay</a></td>	
-								</tr>									
-								<tr>
-									<td class="toLeft">Course length:</td>
-									<td class="toRight">8 weeks</td>
-									<td class="toRight"><a class="formBttn" href="apply.html">Change length</a></td>		
-								</tr>
-								<tr class="darkRow">
-									<td class="toLeft">Start date:</td>
-									<td class="toRight">30 Feb 2013</td>
-									<td class="toRight"><a class="formBttn" href="apply.html">Change date</a></td>	
-								</tr>
-								<tr>
-									<td class="toLeft">End date:</td>
-									<td class="toRight">31 Apr 2013</td>
-									<td class="toRight">&nbsp;</td>	
-								</tr>									
-								<tr class="darkRow">
-									<td class="toLeft">Level attained:</td>
-									<td class="toRight">N/A</td>
-									<td class="toRight">&nbsp;</td>	
-								</tr>
-								<tr>
-									<td class="toLeft">Final grade:</td>
-									<td class="toRight">N/A</td>
-									<td class="toRight">&nbsp;</td>	
-								</tr>
-								<tr class="darkRow">
-									<td class="toLeft">Attendance:</td>
-									<td class="toRight">N/A</td>
-									<td class="toRight">&nbsp;</td>
-								</tr>
-								<tr>
-									<td class="toLeft">Accommodation:</td>
-									<td class="toRight">Private rental</td>
-									<td class="toRight"><a class="formBttn" href="apply.html">Book host family</a></td>
-								</tr>
-							</table>								
-							<!-- "Hide" link -->
-							<p>
-								<a href="#" id="hiddyCourse2-hide" class="hideLink" onclick="showHide('hiddyCourse2');return false;">Hide &#8657; </a>
-							</p>
-						</div>
-					</article>
 
 					
 					<!-- "Hide" link -->
@@ -322,24 +257,15 @@
 				</div> <!-- End of Open part -->
 				
 				<div id="hiddySocActiv" class="sectHidd"> <!-- Hidden part -->
-					<p>
-						Here will be the next upcoming social event details. I think it will be only 1 displayed (for simplicity). So let's say:
+					<p><br>
 					</p>
+					<!-- Logically there will be only 1 event on the list -->
+					@for(socEvent <- events) {
 					<aside>
-						<h4>Trip to Glendalough</h4>
-						<p>
-							Glendalough is famed for its beautiful scenery and historic monuments, 
-							but has also been a centre for pilgrims and visitors from the time of St. Kevin.
-						</p>
-						<p>
-							This is where St. Kevin founded his monastery in the sixth century. He lived here "in the hollow of a tree". 
-							His fame as a holy man spread and he attracted numerous followers.
-						</p>
-						<p>
-							The monastery would have included numerous dwellings, workshops, areas for manuscript writing and copying. 
-							The buildings which survive probably date from between the 8th and 12th centuries. The valley of Glendalough 
-							contains a series of carved and plain stones and crosses, some of which have marked stations on the pilgrim's route.
-						</p>
+						<h4>@socEvent.eventName</h4>
+						<p>@socEvent.eventDescription1</p>
+						<p>@socEvent.eventDescription2</p>
+						<p>@socEvent.eventDescription3</p>
 					</aside>
 					<table>
 						<tr>
@@ -350,13 +276,14 @@
 							<th class="toLeft">&nbsp;</th>
 						</tr>
 						<tr>
-							<td class="toLeft">08 May 2015</td>
-							<td class="toLeft">8:00 AM</td>
-							<td class="toLeft">20</td>	
-							<td class="toLeft">8</td>
+							<td class="toLeft">@socEvent.eventDate.format("dd MMM yyyy")</td>
+							<td class="toLeft">@socEvent.eventTime</td>
+							<td class="toLeft">@socEvent.eventMaxCapacity</td>	
+							<td class="toLeft">@socEvent.eventCurrCapacity</td>
 							<td class="toLeft"><a class="formBttn" href="apply.html">Book event</a></td>
 						</tr>
-						</table>						
+					</table>	
+					}
 					<!-- "Hide" link -->
 					<p>
 						<a href="#" id="hiddySocActiv-hide" class="hideLink" onclick="showHide('hiddySocActiv');return false;">Hide &#8657; </a>
