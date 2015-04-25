@@ -1,3 +1,4 @@
+
 # -- ===========================================================
 # --
 # --	IT Tallaght, 
@@ -10,6 +11,13 @@
 
 
 # --- !Ups
+
+create table account (
+  email                     varchar(255) not null,
+  name                      varchar(255),
+  password                  varchar(255),
+  constraint pk_account primary key (email)
+);
 
 create table course (
   course_id                 bigint not null auto_increment,
@@ -80,19 +88,11 @@ create table stu_event (
 ;
 
 
-
-
 create sequence course_seq;
-
 create sequence event_seq;
-
 create sequence student_seq;
-
 create sequence stu_course_seq;
-
 create sequence stu_event_seq;
-
-
 
 
 insert into course (course_type, course_name, course_description, course_morn_evn, course_length, course_ppw)
@@ -144,8 +144,6 @@ insert into student (student_username, student_password, student_fname, student_
 values('Student1','Student1','Yonohabla','Ingles','female','Spanish','1986-08-16','Calle Alguna','Algunaparte','Granada','Spain','012345678','yonohabla@ingles.com')
 ;
 
-
-
 insert into stu_course(student_id, course_id, course_status, course_start_date, course_end_date, course_level, course_attendance, course_accommodation, course_is_paid)
 values (1, 3, 'Completed', '2014-07-07', '2014-08-03', 'Intermediate', 98, 'Host Family', true)
 ;
@@ -162,36 +160,24 @@ insert into stu_event(event_id, student_id)
 values (1, 1)
 ;
 
-
-
-
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists stu_course;
-
 drop table if exists stu_event;
-
 drop table if exists course;
-
 drop table if exists event;
-
 drop table if exists student;
-
-
+drop table if exists account;
 
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists course_seq;
-
 drop sequence if exists event_seq;
-
 drop sequence if exists student_seq;
-
 drop sequence if exists stu_course_seq;
-
 drop sequence if exists stu_event_seq;
 
 
