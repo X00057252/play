@@ -39,7 +39,10 @@ GET     /account                    controllers.Application.account()
 GET     /apply                      controllers.Application.apply()
 
 # Login page
-GET     /loginscreen                controllers.Application.loginscreen()
+#GET     /loginscreen                controllers.Application.loginscreen()
+GET     /login                  	controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+GET     /logout                     controllers.Application.logout()
 
 # Mock GPG response page
 GET     /paymentgpg                 controllers.Application.paymentgpg()
