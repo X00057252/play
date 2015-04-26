@@ -108,7 +108,22 @@ public class Student extends Model {
     return Student.find.all();
   }
 
+      /**
+     * Retrieve a Student from studentUsername.
+     */
+    public static Student findByStudentUsername(String studentUsername) {
+        return find.where().eq("studentUsername", studentUsername).findUnique();
+    }
   
+  /**
+     * Authenticate a Student.
+     */
+    public static Student authenticate(String studentUsername, String studentPassword) {
+        return find.where()
+            .eq("studentUsername", studentUsername)
+            .eq("studentPassword", studentPassword)
+            .findUnique();
+    }
   
   
 }

@@ -1,0 +1,67 @@
+@(form: Form[Application.Login])
+@main("Login") {
+
+<!-- ===========================================================
+
+	IT Tallaght, 
+	Bart Bula, X00107883, 
+	Andro Haavandi, X00057252
+	April 2015 
+
+=========================================================== -->
+
+<body id="login">
+ 
+		
+		<section>
+
+				<article class="wideArticle">
+					<h3> Login to your account </h3>
+					<p>
+						Fill in your login details below to go to your account page.
+					</p>					
+			
+						@helper.form(routes.Application.authenticate) {
+						
+
+						@if(form.hasGlobalErrors) {
+						<p class="error">
+						@form.globalError.message
+						</p>
+						}
+
+						<p>
+						<input type="studentUsername" name="studentUsername" placeholder="Username" value="@form("studentUsername").value">
+						</p>
+						<p>
+						<input type="studentPassword" name="studentPassword" placeholder="Password">
+						</p>
+						<p>
+						<button type="submit">Login</button>
+						</p>
+						}	
+					</p>					
+					<h4> Don't have an account? </h4>
+					<p>
+						<a href="@routes.Application.apply()">Click here to apply for a course and create an account.</a>
+					</p>				
+					<br>
+				</article>
+
+			
+			
+			
+
+			
+			
+			<a class="backLink" href="Images/Backgrounds/BackChristchurch.jpg" data-lightbox="Christchurch" title="Christchurch Cathedral - Dublin">
+				Background image: Christchurch Cathedral, Dublin<br>
+				Author: Bart Bula<br>
+				Click here to see the image.
+			</a>
+			
+		</section>
+	
+</body>
+ 
+} 
