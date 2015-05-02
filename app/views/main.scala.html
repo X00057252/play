@@ -38,6 +38,24 @@
 			<section class="centrColBar">
 				<a href="@routes.Application.index()"> <img class="logoLink" src="@routes.Assets.at("images/logoTop.png")" alt="School Logo" height="80px"> </a>
 				<div class="navDown"></div> <!-- this div is to keep navigation in line to the bottom -->			
+				
+				<!-- Greeting message and logout button -->
+				@if(StringUtils.isBlank(userName)){
+				<form class="logoutMsg">
+					<div>
+						<a class="logoutBttn" href="@routes.Application.login()">Login</a>
+					</div>
+				</form>
+				}else{
+				<form class="logoutMsg">
+					<div>
+						<a class="logoutBttn" href="@routes.Application.logout()">Logout</a>
+						<label class="logoutLabel">Hello! @userName</label>
+					</div>
+				</form>
+				}
+				
+				<!-- mainNav-->
 				<nav>
 					<a href="@routes.Application.index()" id="homeNav"> <br> HOME </a>
 					<a href="@routes.Application.courses()" id="courseNav"> <br> COURSES </a>
@@ -46,14 +64,14 @@
 					<a href="@routes.Application.visitorsguide()" id="visitNav"> <br> VISITORS' GUIDE </a>
 					<a href="@routes.Application.contactus()" id="contactNav"> <br> CONTACT </a>
 					<a href="@routes.AccountController.myAccount()" id="accountNav"> <br> MY ACCOUNT </a>
-					@if(StringUtils.isBlank(userName)){
+					<!-- @if(StringUtils.isBlank(userName)){
                         <a href="@routes.Application.login()" id="loginNav"> <br> LOGIN </a>
                     }else{
                         <a href="@routes.AccountController.myAccount()" id="accountNav"> <br> @userName </a>
                         <a href="@routes.Application.logout()">Logout</a>
-                    }
+                    } -->
 
-				</nav> <!--mainNav-->
+				</nav> <!--end of: mainNav-->
 
 
 			</section>	

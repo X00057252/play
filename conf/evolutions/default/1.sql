@@ -141,9 +141,16 @@ values('Trip to Glendalough','Glendalough is famed for its beautiful scenery and
 ;
 
 
+
 insert into student (student_username, student_password, student_fname, student_lname, student_gender, student_nationality, student_dob, student_street, student_city, student_province, student_country, student_phone, student_email)
 values('Student1','Student1','Yonohabla','Ingles','female','Spanish','1986-08-16','Calle Alguna','Algunaparte','Granada','Spain','012345678','yonohabla@ingles.com')
 ;
+insert into student (student_username, student_password, student_fname, student_lname, student_gender, student_nationality, student_dob, student_street, student_city, student_country, student_phone, student_email)
+values('Student2','Student2','Stefano','Tuttifrutti','male','Italian','1985-05-20','Via Appia','Roma','Italy','123456789','tutti@frutti.it')
+;
+
+
+
 
 insert into stu_course(student_id, course_id, course_status, course_start_date, course_end_date, course_level, course_attendance, course_accommodation, course_is_paid)
 values (1, 3, 'Completed', '2014-07-07', '2014-08-03', 'Intermediate', 98, 'Host Family', true)
@@ -154,6 +161,12 @@ values (1, 5, 'In Progress', '2015-04-13', '2015-05-31', 'Upper Intermediate', 8
 insert into stu_course(student_id, course_id, course_status, course_start_date, course_end_date, course_level, course_attendance, course_accommodation, course_is_paid)
 values (1, 3, 'Saved for later', '2015-06-29', '2015-07-26', 'Not assessed', 0, 'Host Family', false)
 ;
+insert into stu_course(student_id, course_id, course_status, course_start_date, course_end_date, course_level, course_attendance, course_accommodation, course_is_paid)
+values (2, 3, 'Saved for later', '2015-06-29', '2015-07-26', 'Not assessed', 0, 'Private Rental', false)
+;
+
+
+
 
 # --- !Downs
 

@@ -33,8 +33,9 @@ GET     /visitorsguide              controllers.Application.visitorsguide()
 # Contact page
 GET     /contactus                  controllers.Application.contactus()
 
-# Contact page
+# Account page
 GET     /account                    controllers.AccountController.myAccount()
+POST     /updateProfile              controllers.AccountController.update()
 
 # Apply page
 GET     /apply/:courseId             controllers.StudentCourseController.apply(courseId: Long)
@@ -54,7 +55,7 @@ GET     /logout                     controllers.Application.logout()
 # Mock GPG response page
 GET     /paymentgpg                 controllers.Application.paymentgpg()
 
-POST     /updateProfile              controllers.AccountController.update()
+
 
 
 # Map static resources from the /public folder to the /assets URL path
