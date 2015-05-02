@@ -10,6 +10,7 @@
 
 
 
+
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
@@ -33,13 +34,19 @@ GET     /visitorsguide              controllers.Application.visitorsguide()
 GET     /contactus                  controllers.Application.contactus()
 
 # Contact page
-GET     /account                    controllers.Application.account()
+GET     /account                    controllers.AccountController.myAccount()
 
 # Apply page
-GET     /apply                      controllers.Application.apply()
+GET     /apply/:courseId             controllers.StudentCourseController.apply(courseId: Long)
+GET     /register                    controllers.StudentCourseController.register()
+POST    /studentCourse/save          controllers.StudentCourseController.saveStudentCourse()
+POST    /studentCourse/apply         controllers.StudentCourseController.applyStudentCourse()
+
+# Event
+POST    /bookEvent/student/:sId/event/:eId  controllers.EventController.bookEvent(sId: Long, eId: Long)
+POST    /unBookEvent/student/:sId/event/:eId  controllers.EventController.unBookEvent(sId: Long, eId: Long)
 
 # Login page
-#GET     /loginscreen                controllers.Application.loginscreen()
 GET     /login                  	controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
@@ -47,7 +54,7 @@ GET     /logout                     controllers.Application.logout()
 # Mock GPG response page
 GET     /paymentgpg                 controllers.Application.paymentgpg()
 
-
+POST     /updateProfile              controllers.AccountController.update()
 
 
 # Map static resources from the /public folder to the /assets URL path

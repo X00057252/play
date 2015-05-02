@@ -11,7 +11,6 @@
 
 
 
-
 /*colours used:
 -	active nav icon, article background: 	#
 -	on hover nav icon:					#
@@ -33,7 +32,7 @@
 	
 =============================================================*/
 
-#home, #courses, #accommodation, #studentinfo, #visitors, #contact, #account, #apply, #loginscreen{   /* pages body id-s */
+#home, #courses, #accommodation, #studentinfo, #visitors, #contact, #account, #apply, #login{   /* pages body id-s */
 	background-color: #666;
 	background-size: cover;
 	background-attachment: fixed;
@@ -49,7 +48,7 @@
 #studentinfo {background-image: url('../images/Backgrounds/BackConnemara.jpg');}
 #visitors {background-image: url('../images/Backgrounds/BackGlenveagh.jpg');}
 #contact {background-image: url('../images/Backgrounds/BackKilkennyCastle.jpg');}
-#account, #loginscreen {background-image: url('../images/Backgrounds/BackBective.jpg');}
+#account, #login {background-image: url('../images/Backgrounds/BackBective.jpg');}
 #apply , #paymentgpg{background-image: url('../images/Backgrounds/BackHowth.jpg');}
 
 
@@ -62,7 +61,7 @@ body#studentinfo nav a#infoNav,
 body#visitors nav a#visitNav,
 body#contact nav a#contactNav,
 body#account nav a#accountNav
-body#loginscreen nav a#accountNav
+body#login nav a#accountNav
 body#apply nav a#accountNav 
 body#paymentgpg nav a#accountNav{
 	background: #007C7E;	

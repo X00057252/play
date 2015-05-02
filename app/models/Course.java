@@ -34,6 +34,7 @@ public class Course extends Model {
   // add an ID field
   // mapped to primary key field 'Id' in the Course table
   @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   public Long courseId;
 
   
@@ -99,7 +100,9 @@ public class Course extends Model {
 		.eq("courseType", "acyear")
 	.findList();
   }
-  
-  
+
+    public static Course findById(Long courseId) {
+        return Course.find.where().eq("courseId", courseId).findUnique();
+    }
   
 }

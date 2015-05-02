@@ -88,6 +88,8 @@ public class Event extends Model {
 	.findList();
   }
 
-
+    public static Event findById(Long id) {
+        return Event.find.where().eq("eventId", id).findUnique();
+    }
   
 }

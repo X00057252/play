@@ -11,7 +11,6 @@
 	April 2015 
 
 =========================================================== -->
-
 <body id="courses">
 
 <section>
@@ -84,7 +83,7 @@
 									<td class="toRight">@course.courseLength weeks</td>
 									<td class="toRight">&#8364; @course.coursePPW</td>		
 									<td class="toRight">&#8364; @(course.coursePPW*course.courseLength)</td>
-									<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
+									<td class="toRight"><a class="tableBttn" href="@routes.StudentCourseController.apply(course.courseId)">Apply</a></td>
 								</tr>
 								} 
 							</tbody>
@@ -136,7 +135,7 @@
 									<td class="toRight">@course.courseMornEvn</td>
 									<td class="toRight">&#8364; @course.coursePPW</td>		
 									<td class="toRight">&#8364; @(course.courseLength*course.coursePPW)</td>
-									<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
+									<td class="toRight"><a class="tableBttn" href="@routes.StudentCourseController.apply(course.courseId)">Apply</a></td>
 								</tr>
 								} 
 							</tbody>
@@ -196,7 +195,7 @@
 									<td class="toRight">@course.courseLength weeks</td>
 									<td class="toRight">&#8364; @course.coursePPW</td>		
 									<td class="toRight">&#8364; @(course.courseLength*course.coursePPW)</td>
-									<td class="toRight"><a class="tableBttn" href="@routes.Application.apply()">Apply</a></td>
+									<td class="toRight"><a class="tableBttn" href="@routes.StudentCourseController.apply(course.courseId)">Apply</a></td>
 								</tr>
 								} 
 							</tbody>

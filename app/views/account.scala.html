@@ -1,8 +1,8 @@
-@(mycourses: List[StuCourse], events: List[Event]) 
+@(mycourses: List[StuCourseDto], events: List[Event], stuCourseForm: Form[StudentCourseDto])
 @import helper._
 
 
-@main("Account") {
+@main("Account", stuCourseForm("username").value) {
 
 <!-- ===========================================================
 
@@ -12,7 +12,6 @@
 	April 2015 
 
 =========================================================== -->
-
 <body id="account">
 
 	<section>
@@ -47,62 +46,69 @@
 					<p>
 						Fields marked with * must be filled in.
 					</p>
-					<h3> Username: Username shown here - username can't be changed </h3>
-					<form action="" method="post" id="persDetailsForm">
+					<h3> Username:  - @stuCourseForm("username").value </h3>
+                    @helper.form(action = routes.AccountController.update, 'id -> "accountUpdateForm") {
 						<fieldset>
+                            <input type="hidden" value="@stuCourseForm("username").value" name="username" id="userName">
+                            <input type="hidden" value="@stuCourseForm("studentId").value" name="studentId" id="studentId">
 							<legend> Who are you: </legend>
 							<div class="formRow">
 								<label class="formLabel" for="firstName">*First name:</label>
-								<input class="formInputReq" id="firstName" name="firstName" type="text" placeholder="Enter your first name" required>
+								<input class="formInputReq" id="firstName" name="firstName" type="text" placeholder="Enter your first name" value="@stuCourseForm("firstName").value" required>
 							</div>
 							<div class="formRow">
 								<label class="formLabel" for="lastName">*Last name:</label>
-								<input class="formInputReq" id="lastName" name="lastName" type="text" placeholder="Enter your surname" required>
+								<input class="formInputReq" id="lastName" name="lastName" type="text" placeholder="Enter your surname" value="@stuCourseForm("lastName").value" required>
 							</div>
 							<label class="formLabel" for="gender">Are you:</label>
 							<div class="formRowIndent">
 								<ul class="formList">
-									<li><input class="radioBtn" id="genderMale" name="gender" type="radio"><label for="genderMale">Male</label></li>
-									<li><input class="radioBtn" id="genderFemale" name="gender" type="radio"><label for="genderFemale">Female</label></li>
+                                    @if(stuCourseForm("gender").value.equals("female")) {
+                                        <li><input class="radioBtn" id="genderMale" name="gender" type="radio" value="male"><label for="genderMale">Male</label></li>
+                                        <li><input class="radioBtn" id="genderFemale" name="gender" type="radio" value="female" checked><label for="genderFemale">Female</label></li>
+                                    } else {
+                                        <li><input class="radioBtn" id="genderMale" name="gender" type="radio" value="male" checked><label for="genderMale">Male</label></li>
+                                        <li><input class="radioBtn" id="genderFemale" name="gender" type="radio" value="female"><label for="genderFemale">Female</label></li>
+                                    }
 								</ul>
 							</div>
 							<div class="formRow">
 								<label class="formLabel" for="national">*Nationality:</label>
-								<input class="formInputReq" id="national" name="national" type="text" placeholder="Enter your nationality" required>
+								<input class="formInputReq" id="nationality" name="nationality" type="text" placeholder="Enter your nationality" value="@stuCourseForm("nationality").value" required>
 							</div>
 							<div class="formRow">
 								<label class="formLabel" for="dateBirth">*Date of Birth:</label>
-								<input class="formInputReq" id="dateBirth" name="dateBirth" type="date" placeholder="Enter your date of birth" required>
+								<input class="formInputReq" id="dateOfBirth" name="dateOfBirth" type="date" placeholder="Enter your date of birth" value="@stuCourseForm("dateOfBirth").value" required>
 							</div>								
 						</fieldset>	
 						<fieldset>
 							<legend>Your home address:</legend>
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressStreet">*House and street:</label>
-								<input class="formInputReq" id="homeAddressStreet" name="homeAddressStreet" type="text" placeholder="Enter your house number and street" required>
+								<input class="formInputReq" id="homeAddressStreet" name="street" type="text" placeholder="Enter your house number and street" value="@stuCourseForm("street").value" required>
 							</div>	
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressCity">*Post code, city:</label>
-								<input class="formInputReq" id="homeAddressCity" name="homeAddressCity" type="text" placeholder="Enter your post code and city" required>
+								<input class="formInputReq" id="homeAddressCity" name="city" type="text" placeholder="Enter your post code and city" value="@stuCourseForm("city").value" required>
 							</div>								
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressProvince">Province/state:</label>
-								<input class="formInput" id="homeAddressProvince" name="homeAddressProvince" type="text" placeholder="Enter your province/state">
+								<input class="formInput" id="homeAddressProvince" name="province" type="text" value="@stuCourseForm("province").value" placeholder="Enter your province/state">
 							</div>	
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressCountry">*Country:</label>
-								<input class="formInputReq" id="homeAddressCountry" name="homeAddressCountry" type="text" placeholder="Enter your country" required>
+								<input class="formInputReq" id="homeAddressCountry" name="country" type="text" placeholder="Enter your country" value="@stuCourseForm("country").value" required>
 							</div>	
 						</fieldset>
 						<fieldset>
 							<legend>Your contact details:</legend>
 							<div class="formRow">
 								<label class="formLabel" for="telephone">*Telephone:</label>
-								<input class="formInputReq" id="telephone" name="telephone" type="tel" placeholder="Enter your telephone no." required>
+								<input class="formInputReq" id="telephone" name="phone" type="tel" placeholder="Enter your telephone no." value="@stuCourseForm("phone").value" required>
 							</div>				
 							<div class="formRow">
 								<label class="formLabel" for="email">*Email:</label>
-								<input class="formInputReq" id="email" name="email" type="email" placeholder="Enter your email address" required>
+								<input class="formInputReq" id="email" name="email" type="email" placeholder="Enter your email address" value="@stuCourseForm("email").value" required>
 							</div>
 							<div class="formRow">
 								<label class="formLabel" for="email">*Confirm Email:</label>
@@ -113,7 +119,7 @@
 							<legend>Your account password:</legend>
 							<div class="formRow">
 								<label class="formLabel" for="passwordStu">*Password:</label>
-								<input class="formInputReq" id="passwordStu" name="passwordStu" type="password" placeholder="Enter your password" required>
+								<input class="formInputReq" id="passwordStu" name="password" type="password" placeholder="Enter your password" value="@stuCourseForm("password").value" required>
 							</div>				
 							<div class="formRow">
 								<label class="formLabel" for="passwordStu">*Confirm Password:</label>
@@ -124,8 +130,9 @@
 						<div class="formRowIndent">
 							<input class="formBttn" name="changePersDetails" id="changePersDetails" type="submit" onclick="" value="Submit Updated Details">
 							<input class="formBttn" name="reset" id="resetPersDetails" type="reset" value="Reset Details">
-						</div>			
-					</form>	 <!-- End of: Form -->						
+						</div>
+                        <div id="message" style="display:none"></div>
+					} <!-- End of: Form -->
 					<!-- "Hide" link -->
 					<p>
 						<a href="#" id="hiddyPersonalDet-hide" class="hideLink" onclick="showHide('hiddyPersonalDet');return false;">Hide &#8657; </a>
@@ -154,14 +161,14 @@
 					@for(mycourse <- mycourses) {
 					<article class="innerArticle">
 						<div class="innerArticle" id="hiddyCourse@mycourse.stuCourseId-top">
-							<h3> Course name in header (to do)
+							<h3> @mycourse.course.courseName
 								<!-- read more link -->
 								<a href="#" id="hiddyCourse@mycourse.stuCourseId-show" class="showLink" onclick="showHide('hiddyCourse@mycourse.stuCourseId');return false;">Read more &#8659; </a>
 							</h3>
 						</div> <!-- End of Open part -->						
 						<div id="hiddyCourse@mycourse.stuCourseId" class="sectHidd"> <!-- Hidden part -->
 							<aside>
-								<h4>Course description: (to do)</h4>
+								<h4>@mycourse.course.courseDescription</h4>
 								<p>
 									Here will be course description. Table below provides info about course/results etc.
 									This is a finished course, so no further edits possible.
@@ -175,17 +182,17 @@
 								</tr>
 								<tr>
 									<td class="toLeft">Price per week:</td>
-									<td class="toRight">&#8364; to do</td>
+									<td class="toRight">&#8364; @mycourse.course.coursePPW</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>
 								<tr class="darkRow">
 									<td class="toLeft">Total price:</td>
-									<td class="toRight">&#8364; to do</td>
+									<td class="toRight">&#8364; @(mycourse.course.coursePPW * mycourse.course.courseLength)</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>									
 								<tr>
 									<td class="toLeft">Course length:</td>
-									<td class="toRight">to do</td>
+									<td class="toRight">@mycourse.course.courseLength Weeks</td>
 									<td class="toRight">&nbsp;</td>		
 								</tr>
 								<tr class="darkRow">
@@ -216,7 +223,7 @@
 							</table>	
 							@if(mycourse.courseStatus.equals("Saved for later")) {
 							<div class="formRowIndent">	
-								<a class="formBttn" href="@routes.Application.apply()">Continue application</a>
+								<a class="formBttn" href="@routes.StudentCourseController.apply(mycourse.courseId)">Continue application</a>
 								<a class="formBttn" href="">Delete application</a>
 							</div>	
 							}
@@ -279,11 +286,15 @@
 							<td class="toLeft">@socEvent.eventDate.format("dd MMM yyyy")</td>
 							<td class="toLeft">@socEvent.eventTime</td>
 							<td class="toLeft">@socEvent.eventMaxCapacity</td>	
-							<td class="toLeft">@socEvent.eventCurrCapacity</td>
-							<td class="toLeft"><a class="formBttn" href="apply.html">Book event</a></td>
+							<td class="toLeft" id="currentCapacity@socEvent.eventId">@socEvent.eventCurrCapacity</td>
+                            <input type="hidden" id="action@socEvent.eventId" value="book">
+							<td class="toLeft">
+                                <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">Book event</a>
+                            </td>
 						</tr>
 					</table>	
 					}
+                    <div id="message1" style="display:none"/>
 					<!-- "Hide" link -->
 					<p>
 						<a href="#" id="hiddySocActiv-hide" class="hideLink" onclick="showHide('hiddySocActiv');return false;">Hide &#8657; </a>

@@ -1,4 +1,5 @@
 
+
 # -- ===========================================================
 # --
 # --	IT Tallaght, 
@@ -152,12 +153,6 @@ values (1, 5, 'In Progress', '2015-04-13', '2015-05-31', 'Upper Intermediate', 8
 ;
 insert into stu_course(student_id, course_id, course_status, course_start_date, course_end_date, course_level, course_attendance, course_accommodation, course_is_paid)
 values (1, 3, 'Saved for later', '2015-06-29', '2015-07-26', 'Not assessed', 0, 'Host Family', false)
-;
-
-
-
-insert into stu_event(event_id, student_id)
-values (1, 1)
 ;
 
 # --- !Downs

@@ -9,7 +9,6 @@
 */
 
 
-
 package models;
 
 // import Play Framework Validation class
@@ -34,6 +33,7 @@ public class Student extends Model {
   // add an ID field
   // mapped to primary key field 'Id' in the Student table
   @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   public Long studentId;
 
   
@@ -100,7 +100,7 @@ public class Student extends Model {
   
   // An Ebean 'helper' which simplifies querying of the model.
   // It specifies that Students are identified by the Id field (which is of type Long).
-  public static Finder<Long, Student> find = new Finder<Long, Student>(Long.class, Student.class);
+  public static Model.Finder<Long, Student> find = new Model.Finder<Long, Student>(Long.class, Student.class);
   
   // Call the find.all() method of Student (inherited from the Ebean Model)
   // Return the list of Students found in the database

@@ -1,4 +1,5 @@
-@(title: String)(content: Html)
+@import org.apache.commons.lang3.StringUtils
+@(title: String, userName: String = null)(content: Html)
 <!DOCTYPE html>
 
 <!-- ===========================================================
@@ -9,12 +10,11 @@
 	April 2015 
 
 =========================================================== -->
-
 <html id="@title">
 
 	<head>
 		<title>Progress School of English</title>
-		<meta name="authors" content="Bart Bula - X100107883, Andro Haavandi - X00057252" />
+		
 
 		<link href="@routes.Assets.at("stylesheets/reset.css")" rel="stylesheet" type="text/css" />
 		<link href="@routes.Assets.at("stylesheets/lightbox.css")" rel="stylesheet" type="text/css" />
@@ -45,15 +45,13 @@
 					<a href="@routes.Application.studentinfo()" id="infoNav"> <br> STUDENTS INFO </a>
 					<a href="@routes.Application.visitorsguide()" id="visitNav"> <br> VISITORS' GUIDE </a>
 					<a href="@routes.Application.contactus()" id="contactNav"> <br> CONTACT </a>
-					<a href="@routes.Application.account()" id="accountNav"> <br> MY ACCOUNT </a>
-					
-					<dl id="user">
-					<dt>User</dt>
-					<dd>
-					<a href="@routes.Application.logout()">Logout</a>
-					</dd>
-					</dl>
-
+					<a href="@routes.AccountController.myAccount()" id="accountNav"> <br> MY ACCOUNT </a>
+					@if(StringUtils.isBlank(userName)){
+                        <a href="@routes.Application.login()" id="loginNav"> <br> LOGIN </a>
+                    }else{
+                        <a href="@routes.AccountController.myAccount()" id="accountNav"> <br> @userName </a>
+                        <a href="@routes.Application.logout()">Logout</a>
+                    }
 
 				</nav> <!--mainNav-->
 
@@ -72,6 +70,7 @@
 					Bart Bula, X00107883 <br>
 					Andro Haavandi, X00057252 <br>
 					IT Tallaght.
+					
 					</p>
 				</article>
 				

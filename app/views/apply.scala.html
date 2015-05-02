@@ -1,4 +1,7 @@
-@main("Apply") {
+@import helper._
+@import org.apache.commons.lang3.StringUtils
+@(stuCourseForm: Form[StudentCourseDto], genCourses: List[Course], examCourses: List[Course], acYear: List[Course])
+@main("Apply", stuCourseForm("username").value) {
 
 <!-- ===========================================================
 
@@ -6,7 +9,7 @@
 	Bart Bula, X00107883, 
 	Andro Haavandi, X00057252
 	April 2015 
-
+	
 =========================================================== -->
 
 <body id="apply">
@@ -20,61 +23,67 @@
 						<p>
 							Fields marked with * must be filled in.
 						</p>
-					<form action="" method="post" id="persDetailsForm">
+                    @helper.form(routes.Application.paymentgpg, 'id -> "studentCourseForm") {
 						<fieldset>
+                            <input type="hidden" value="@stuCourseForm("studentId").value" name="studentId" id="studentId">
 							<legend> Who are you: </legend>
 							<div class="formRow">
 								<label class="formLabel" for="firstName">*First name:</label>
-								<input class="formInputReq" id="firstName" name="firstName" type="text" placeholder="Enter your first name" required>
+								<input class="formInputReq" id="firstName" name="firstName" type="text" placeholder="Enter your first name" value="@stuCourseForm("firstName").value" required>
 							</div>
 							<div class="formRow">
 								<label class="formLabel" for="lastName">*Last name:</label>
-								<input class="formInputReq" id="lastName" name="lastName" type="text" placeholder="Enter your surname" required>
+								<input class="formInputReq" id="lastName" name="lastName" type="text" placeholder="Enter your surname" value="@stuCourseForm("lastName").value" required>
 							</div>
 							<label class="formLabel" for="gender">Are you:</label>
-							<div class="formRowIndent">
-								<ul class="formList">
-									<li><input class="radioBtn" id="genderMale" name="gender" type="radio"><label for="genderMale">Male</label></li>
-									<li><input class="radioBtn" id="genderFemale" name="gender" type="radio"><label for="genderFemale">Female</label></li>
-								</ul>
-							</div>
+                            <div class="formRowIndent">
+                                <ul class="formList">
+                                    @if(stuCourseForm("username").value == "male") {
+                                    <li><input class="radioBtn" id="genderMale" name="gender" type="radio" value="male" checked><label for="genderMale">Male</label></li>
+                                    <li><input class="radioBtn" id="genderFemale" name="gender" type="radio" value="female"><label for="genderFemale">Female</label></li>
+                                    } else {
+                                    <li><input class="radioBtn" id="genderMale" name="gender" type="radio" value="male"><label for="genderMale">Male</label></li>
+                                    <li><input class="radioBtn" id="genderFemale" name="gender" type="radio" value="female" checked><label for="genderFemale">Female</label></li>
+                                    }
+                                </ul>
+                            </div>
 							<div class="formRow">
 								<label class="formLabel" for="national">*Nationality:</label>
-								<input class="formInputReq" id="national" name="national" type="text" placeholder="Enter your nationality" required>
+								<input class="formInputReq" id="nationality" name="nationality" type="text" placeholder="Enter your nationality" value="@stuCourseForm("nationality").value" required>
 							</div>
 							<div class="formRow">
 								<label class="formLabel" for="dateBirth">*Date of Birth:</label>
-								<input class="formInputReq" id="dateBirth" name="dateBirth" type="date" placeholder="Enter your date of birth" required>
+								<input class="formInputReq" id="dateOfBirth" name="dateOfBirth" type="date" placeholder="Enter your date of birth" value="@stuCourseForm("dateOfBirth").value" required>
 							</div>								
 						</fieldset>	
 						<fieldset>
 							<legend>Your home address:</legend>
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressStreet">*House and street:</label>
-								<input class="formInputReq" id="homeAddressStreet" name="homeAddressStreet" type="text" placeholder="Enter your house number and street" required>
+								<input class="formInputReq" id="homeAddressStreet" name="homeAddressStreet" type="text" placeholder="Enter your house number and street" value="@stuCourseForm("street").value" required>
 							</div>	
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressCity">*Post code, city:</label>
-								<input class="formInputReq" id="homeAddressCity" name="homeAddressCity" type="text" placeholder="Enter your post code and city" required>
+								<input class="formInputReq" id="homeAddressCity" name="homeAddressCity" type="text" placeholder="Enter your post code and city" value="@stuCourseForm("city").value" required>
 							</div>								
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressProvince">Province/state:</label>
-								<input class="formInput" id="homeAddressProvince" name="homeAddressProvince" type="text" placeholder="Enter your province/state">
+								<input class="formInput" id="homeAddressProvince" name="homeAddressProvince" type="text" placeholder="Enter your province/state" value="@stuCourseForm("province").value">
 							</div>	
 							<div class="formRow">
 								<label class="formLabel" for="homeAddressCountry">*Country:</label>
-								<input class="formInputReq" id="homeAddressCountry" name="homeAddressCountry" type="text" placeholder="Enter your country" required>
+								<input class="formInputReq" id="homeAddressCountry" name="homeAddressCountry" type="text" placeholder="Enter your country" value="@stuCourseForm("country").value" required>
 							</div>	
 						</fieldset>
 						<fieldset>
 							<legend>Your contact details:</legend>
 							<div class="formRow">
 								<label class="formLabel" for="telephone">*Telephone:</label>
-								<input class="formInputReq" id="telephone" name="telephone" type="tel" placeholder="Enter your telephone no." required>
+								<input class="formInputReq" id="telephone" name="telephone" type="tel" placeholder="Enter your telephone no." value="@stuCourseForm("phone").value" required>
 							</div>				
 							<div class="formRow">
 								<label class="formLabel" for="email">*Email:</label>
-								<input class="formInputReq" id="email" name="email" type="email" placeholder="Enter your email address" required>
+								<input class="formInputReq" id="email" name="email" type="email" placeholder="Enter your email address" value="@stuCourseForm("email").value" required>
 							</div>
 							<div class="formRow">
 								<label class="formLabel" for="email">*Confirm Email:</label>
@@ -85,11 +94,16 @@
 							<legend>Your account details:</legend>
 							<div class="formRow">
 								<label class="formLabel" for="username">*Username:</label>
-								<input class="formInputReq" id="username" name="username" type="text" placeholder="Choose your username" required>
+                                @if(StringUtils.isBlank(stuCourseForm("username").value)){
+								    <input class="formInputReq" id="userName" name="username" type="text" placeholder="Choose your username" required>
+                                }else{
+                                    <input type="hidden" value="@stuCourseForm("username").value" name="username" id="userName">
+                                    @stuCourseForm("username").value
+                                }
 							</div>	
 							<div class="formRow">
 								<label class="formLabel" for="passwordStu">*Password:</label>
-								<input class="formInputReq" id="passwordStu" name="passwordStu" type="password" placeholder="Enter your password" required>
+								<input class="formInputReq" id="passwordStu" name="passwordStu" type="password" placeholder="Enter your password" value="@stuCourseForm("password").value" required>
 							</div>				
 							<div class="formRow">
 								<label class="formLabel" for="passwordStu">*Confirm Password:</label>
@@ -100,31 +114,35 @@
 							<legend>Your course:</legend>
 							<div class="formRow">
 								<label class="formLabel" for="courseSelect">*Your course:</label>
-								<select class="formSelect" id="courseSelect" name="subject">
+                                <input type="hidden" id="selectedCourseId" value="@stuCourseForm("courseId").value">
+								<select class="formSelect" id="courseSelect" name="courseId">
 									<option class="formOption" value="" selected>Select course:</option>
 									<optgroup label="General English:">
-										<option class="formOption" value="2 Weeks - Mornings">2 Weeks - Mornings</option>
-										<option class="formOption" value="2 Weeks - Evenings">2 Weeks - Evenings</option>
-										<option class="formOption" value="4 Weeks - Mornings">4 Weeks - Mornings</option>
-										<option class="formOption" value="4 Weeks - Evenings">4 Weeks - Evenings</option>
-										<option class="formOption" value="8 Weeks - Mornings">8 Weeks - Mornings</option>
-										<option class="formOption" value="8 Weeks - Evenings">8 Weeks - Evenings</option>
-										<option class="formOption" value="12 Weeks - Mornings">12 Weeks - Mornings</option>
-										<option class="formOption" value="12 Weeks - Evenings">12 Weeks - Evenings</option>
+                                        @for(course <- genCourses) {
+                                            <option class="formOption" value="@course.courseId">@course.courseLength Weeks -
+                                                @if(course.courseMornEvn.contains("Morn")){
+                                                    Mornings
+                                                }else{
+                                                    Evenings
+                                                }
+                                            </option>
+                                        }
 									</optgroup>
 									<optgroup label="Exam Preparation:">
-										<option class="formOption" value="IELTS Exam">IELTS Exam</option>
-										<option class="formOption" value="Cambridge Exam">Cambridge Exam</option>
-										<option class="formOption" value="TOEFL Exam">TOEFL Exam</option>
-									</optgroup>	
+                                        @for(course <- examCourses) {
+										    <option class="formOption" value="@course.courseId">@course.courseName</option>
+                                        }
+									</optgroup>
 									<optgroup label="Academic Year Programme:">
-										<option class="formOption" value="Academic Year Programme">Academic Year Programme</option>
+                                        @for(course <- acYear) {
+										    <option class="formOption" value="@course.courseId">@course.courseName</option>
+                                        }
 									</optgroup>
 								</select>
 							</div>								
 							<div class="formRow">
 								<label class="formLabel" for="myCourseStDate_1">*Course start date:</label>
-								<input class="formInputReq" id="myCourseStDate_1" name="myCourseStDate" type="date" required>
+								<input class="formInputReq" id="courseStartDate" name="myCourseStDate" type="date" required>
 							</div>
 						</fieldset>
 						<fieldset>
@@ -132,8 +150,8 @@
 							<label class="formLabel" for="accommOption">I will stay with:</label>
 							<div class="formRowIndent">
 								<ul class="formList">
-									<li><input class="radioBtn" id="accommOptionHost" name="accommOption" type="radio"><label for="accommOptionHost">Host Family</label></li>
-									<li><input class="radioBtn" id="accommOptionPrivate" name="accommOption" type="radio"><label for="accommOptionPrivate">Private Rental</label></li>
+									<li><input class="radioBtn" id="accommOptionHost" name="accommOption" type="radio" value="Host Family"><label for="accommOptionHost">Host Family</label></li>
+									<li><input class="radioBtn" id="accommOptionPrivate" name="accommOption" type="radio" value="private"><label for="accommOptionPrivate">Private Rental</label></li>
 								</ul>
 							</div>								
 						</fieldset>	
@@ -141,12 +159,12 @@
 						</fieldset>	
 						<br>
 						<div class="formRowIndent">
-							<input class="formBttn" name="goToGpg" id="goToGpg" type="submit" onclick="" value="Go To Payment">
-							<input class="formBttn" name="saveForLater" id="saveForLater" type="submit" onclick="" value="Save For Later">
+							<input class="formBttn" name="goToGpg" id="goToGpg" type="submit" onclick="" action="submit" value="Go To Payment">
+							<input class="formBttn" name="saveForLater" id="saveForLater" type="submit" action="save" onclick="" value="Save For Later">
 							<input class="formBttn" name="cancel" id="cancelApplication" type="reset" value="Cancel Application">
-						</div>			
-					</form>	 <!-- End of: Form -->						
-
+						</div>
+                        <div id="message" style="display:none"></div>
+                    }
 				</article>
 
 				

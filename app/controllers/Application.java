@@ -16,6 +16,7 @@ package controllers;
 import models.*;
 
 // Play Framework dependencies:
+import org.apache.commons.lang3.StringUtils;
 import play.data.Form;
 import play.mvc.Result;
 import play.mvc.Controller;
@@ -26,9 +27,12 @@ import play.mvc.*;
 
 
 // Import the view templates:
+import util.StudentCourseTransformer;
+import util.StudentTransformer;
 import views.html.*;
 
 // Import ORM dependencies:
+import java.util.ArrayList;
 import java.util.List;
 import com.avaje.ebean.*;
 
@@ -39,7 +43,8 @@ public class Application extends Controller {
 
 
     public static Result index() {
-        return ok(index.render());
+        return ok(index.render()); 
+		
     }
 
 	public static Result accommodation() {
@@ -58,20 +63,6 @@ public class Application extends Controller {
         return ok(contactus.render());
 	}
 	
-	@Security.Authenticated(Secured.class)
-	public static Result account() {
-	
-		//retrieve event:
-		List<Event> currentEvent = Event.findEvent();
-		List<StuCourse> myCourses = StuCourse.findStuCourse(1L);
-		
-        return ok(account.render(myCourses, currentEvent));
-	}
-	
-	public static Result apply() {
-        return ok(apply.render());
-	}
-
 	/*public static Result loginscreen() {
         return ok(loginscreen.render());
 	} */
@@ -79,7 +70,6 @@ public class Application extends Controller {
 	public static Result paymentgpg() {
         return ok(paymentgpg.render());
 	}
-	
 
 	// -- Authentication
     
@@ -87,7 +77,23 @@ public class Application extends Controller {
         
         public String studentUsername;
         public String studentPassword;
-        
+
+        public String getStudentUsername() {
+            return studentUsername;
+        }
+
+        public void setStudentUsername(String studentUsername) {
+            this.studentUsername = studentUsername;
+        }
+
+        public String getStudentPassword() {
+            return studentPassword;
+        }
+
+        public void setStudentPassword(String studentPassword) {
+            this.studentPassword = studentPassword;
+        }
+
         public String validate() {
             if(Student.authenticate(studentUsername, studentPassword) == null) {
                 return "Invalid username or password";
@@ -114,7 +120,7 @@ public class Application extends Controller {
 			session().clear();
 			session("studentUsername", loginForm.get().studentUsername);
 			return redirect(
-				routes.Application.account()
+				routes.AccountController.myAccount()
 			);
 		}
 		
@@ -122,7 +128,7 @@ public class Application extends Controller {
 	
 	public static Result logout() {
     session().clear();
-    flash("success", "You've been logged out");
+	flash("success", "You've been logged out");
     return redirect(routes.Application.index());
 	}
 	

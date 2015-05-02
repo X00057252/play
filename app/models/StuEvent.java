@@ -36,6 +36,7 @@ public class StuEvent extends Model {
   // add an ID field
   // mapped to primary key field 'Id' in the StuEvent table
   @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   public Long stuEventId;
 
   
@@ -67,7 +68,10 @@ public class StuEvent extends Model {
     return StuEvent.find.all();
   }
 
-  
+    public static StuEvent findByStuIdEventId(Long studentId, Long eventId) {
+        return StuEvent.find.where().eq("studentID", studentId).eq("eventID", eventId).findUnique();
+    }
+
   
   
 }

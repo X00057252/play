@@ -1,6 +1,3 @@
-
-
-
 /* ===========================================================
 
 	IT Tallaght, 
@@ -9,11 +6,6 @@
 	April 2015 
 
 =========================================================== */
-
-
-
-
-
 /* Governing read more/less links in articles: --
  		shID+'show' - "Read more" link
 		shID - Hidden section          */  
@@ -125,11 +117,128 @@ function emailCheck(input) {
 	}
 }
 // End of: Check if email and confirmed email are the same --
+    $(function() {
+        if($('#selectedCourseId').val())
+        {
+            $('#courseSelect').val($('#selectedCourseId').val())
+        }
+        $('#studentCourseForm').submit(function(event) {
+            event.preventDefault();
+            if($('#emailConf').val() != $('#emailConf').val())
+            {
+                $('#message').text("Emails don't match! Please re-enter.").show().delay(5000).fadeOut();
+            }
+            else if($('#passwordStu').val() != $('#passwordConf').val())
+            {
+                $('#message').text("Passwords don't match! Please re-enter.").show().delay(5000).fadeOut();
+            }
+            else
+            {
+                applyCourse(event.originalEvent.explicitOriginalTarget.getAttribute('action'));
+            }
+        });
 
+        $('#accountUpdateForm').submit(function(event) {
+            event.preventDefault();
+            if($('#emailConf').val() != $('#emailConf').val())
+            {
+                $('#message').text("Emails don't match! Please re-enter.").show().delay(5000).fadeOut();
+            }
+            else if($('#passwordStu').val() != $('#passwordConf').val())
+            {
+                $('#message').text("Passwords don't match! Please re-enter.").show().delay(5000).fadeOut();
+            }
+            else
+            {
+                updateAccount();
+            }
+        });
+    });
 
+    function updateAccount()
+    {
+        var data = accountData();
+        var successHandler = function(){ $('#message').text('Account update is successful').show().delay(5000).fadeOut();}
+        var failureHandler = function(xhr, status, error){ $('#message').text('Course Save is failed with ' + error).show().delay(5000).fadeOut();}
+        ajaxHandler('updateProfile', 'POST', data, successHandler, failureHandler);
+    }
 
+    function submitEvent(eventId, studentId){
+        var action = $('#action'+eventId).val();
+        var url = (action == 'book' ? ('/bookEvent/student/'+studentId+'/event/'+eventId) : ('/unBookEvent/student/'+studentId+'/event/'+eventId));
+        var successHandler = function(data){
+                                $('#message1').text('Action successful').show().delay(5000).fadeOut();
+                                $('#action'+eventId).val(action == 'book' ? 'unbook' : 'book');
+                                $('#eventSubmitBtn'+eventId).text(action == 'book' ? 'Un Book Event' : 'Book Event');
+                                $('#currentCapacity'+eventId).text(data['freeSpace']);
+                             }
+        var failureHandler = function(xhr, status, error){ $('#message1').text('Action failed with error ' + error).show().delay(5000).fadeOut();}
+        ajaxHandler(url, 'POST', null, successHandler, failureHandler);
+    }
 
+    function applyCourse(action)
+    {
+        var data = accountData();
+        data['courseId'] = $('#courseSelect').val();
+        data['courseStartDate'] = $('#courseStartDate').val();
+        data['accomodationType'] = $('[name=accommOption]:checked').val();
+        var successHandler = function(){ $('#message').text('Course Save is successful').show().delay(5000).fadeOut();
+                                        if(action == 'save')
+                                        {
+                                            window.location="/account"
+                                        }
+                                        else
+                                        {
+                                            window.location="/paymentgpg"
+                                        }
+                                        }
+        var failureHandler = function(xhr, status, error){ $('#message').text('Course Save is failed with ' + error).show().delay(5000).fadeOut();}
+        ajaxHandler(action == 'save' ? '/studentCourse/save' : '/studentCourse/apply', 'POST', data, successHandler, failureHandler);
+    }
 
+    function accountData()
+    {
+        return {
+                    'studentId' : $('#studentId').val(),
+                    'username' : $('#userName').val(),
+                    'firstName' : $('#firstName').val(),
+                    'lastName' : $('#lastName').val(),
+                    'gender' : $('[name=gender]:checked').val(),
+                    'nationality' : $('#nationality').val(),
+                    'dateOfBirth' : $('#dateOfBirth').val(),
+                    'street' : $('#homeAddressStreet').val(),
+                    'city' : $('#homeAddressCity').val(),
+                    'province' : $('#homeAddressProvince').val(),
+                    'country' : $('#homeAddressCountry').val(),
+                    'phone' : $('#telephone').val(),
+                    'email' : $('#email').val(),
+                    'password' : $('#passwordStu').val()
+               }
+    }
 
-
-
+    function ajaxHandler(url, type, data, successHandler, failureHandler)
+    {
+        var request = {url: url, type: type}
+        if(data)
+        {
+            request['data'] = data
+        }
+        $.ajax(request)
+            .done(
+                function(data)
+                {
+                    if(successHandler)
+                    {
+                        successHandler(data);
+                    }
+                }
+            ).fail(
+                function(xhr, status, error)
+                {
+                    if(failureHandler)
+                    {
+                        failureHandler(xhr, status, error);
+                    }
+                }
+            )
+    }

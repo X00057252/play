@@ -9,7 +9,6 @@
 */
 
 
-
 package models;
 
 // import Play Framework Validation class
@@ -35,6 +34,7 @@ public class StuCourse extends Model {
   // add an ID field
   // mapped to primary key field 'Id' in the StuCourse table
   @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   public Long stuCourseId;
 
   
@@ -93,7 +93,9 @@ public class StuCourse extends Model {
 	.findList();
   }
 
-  
+    public static StuCourse findByStuIdCourseIdStatus(Long studentId, Long courseId, String status) {
+        return StuCourse.find.where().eq("studentId", studentId).eq("courseId", courseId).eq("courseStatus", status).findUnique();
+    }
   
   
 }
