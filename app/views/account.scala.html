@@ -224,7 +224,7 @@
 							@if(mycourse.courseStatus.equals("Saved for later")) {
 							<div class="formRowIndent">	
 								<a class="formBttn" href="@routes.StudentCourseController.apply(mycourse.courseId)">Continue application</a>
-								<a class="formBttn" href="">Delete application</a>
+								<a class="formBttn" href="@routes.StudentCourseController.deleteApplication(mycourse.courseId)">Delete application</a>
 							</div>	
 							}
 							<!-- "Hide" link -->
@@ -287,10 +287,17 @@
 							<td class="toLeft">@socEvent.eventTime</td>
 							<td class="toLeft">@socEvent.eventMaxCapacity</td>	
 							<td class="toLeft" id="currentCapacity@socEvent.eventId">@socEvent.eventCurrCapacity</td>
-                            <input type="hidden" id="action@socEvent.eventId" value="book">
-							<td class="toLeft">
-                                <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">Book event</a>
-                            </td>
+                            @if("BOOKED".equals(socEvent.status)){
+                                <input type="hidden" id="action@socEvent.eventId" value="unbook">
+                                <td class="toLeft">
+                                    <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">Un Book event</a>
+                                </td>
+                            } else {
+                                <input type="hidden" id="action@socEvent.eventId" value="book">
+                                <td class="toLeft">
+                                    <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">Book event</a>
+                                </td>
+                            }
 						</tr>
 					</table>	
 					}

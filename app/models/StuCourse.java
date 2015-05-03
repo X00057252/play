@@ -96,6 +96,8 @@ public class StuCourse extends Model {
     public static StuCourse findByStuIdCourseIdStatus(Long studentId, Long courseId, String status) {
         return StuCourse.find.where().eq("studentId", studentId).eq("courseId", courseId).eq("courseStatus", status).findUnique();
     }
-  
-  
+
+    public static StuCourse findByStuIdCourseId(Long studentId, Long courseId) {
+        return StuCourse.find.where().eq("studentId", studentId).eq("courseId", courseId).findUnique();
+    }
 }

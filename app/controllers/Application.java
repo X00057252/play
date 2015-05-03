@@ -9,7 +9,6 @@
 */
 
 
-
 package controllers;
 
 // Import data base classes:
@@ -68,7 +67,12 @@ public class Application extends Controller {
 	} */
 
 	public static Result paymentgpg() {
-        return ok(paymentgpg.render());
+        String userName = session("studentUsername");
+        Student student = Student.findByStudentUsername(userName);
+        String courseId = form().bindFromRequest().get("courseId");
+        Course course = Course.findById(Long.parseLong(courseId));
+        StuCourse stuCourse = StuCourse.findByStuIdCourseIdStatus(student.studentId, Long.parseLong(courseId), "In Progress");
+        return ok(paymentgpg.render(userName, course, stuCourse.courseAccommodation));
 	}
 
 	// -- Authentication
@@ -107,21 +111,29 @@ public class Application extends Controller {
      * Login page.
      */
     public static Result login() {
+        String referer = flash().get("url");
         return ok(
-            login.render(form(Login.class))
+            login.render(form(Login.class), referer)
         );
     }
 	
 	public static Result authenticate() {
-    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        String referer = form().bindFromRequest().get("referer");
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 		if (loginForm.hasErrors()) {
-			return badRequest(login.render(loginForm));
+			return badRequest(login.render(loginForm, referer));
 		} else {
 			session().clear();
 			session("studentUsername", loginForm.get().studentUsername);
-			return redirect(
-				routes.AccountController.myAccount()
-			);
+            if(StringUtils.isBlank(referer)) {
+                return redirect(
+                        routes.AccountController.myAccount()
+                );
+            }
+            else
+            {
+                return redirect(referer);
+            }
 		}
 		
 		}
@@ -143,7 +155,7 @@ public class Application extends Controller {
 		
 		
 		//render the view, pass all Course list as parameters:
-		return ok(courses.render(genList,examList,acYearList));
+		return ok(courses.render(genList,examList,acYearList, session("studentUsername")));
 	}
 	
 	

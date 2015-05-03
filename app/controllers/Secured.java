@@ -7,8 +7,6 @@
 
    =========================================================== 
 */
-
-
 package controllers;
 
 import play.*;
@@ -21,6 +19,8 @@ public class Secured extends Security.Authenticator {
 
     @Override
     public String getUsername(Context ctx) {
+        String referer = ctx.request().uri();
+        ctx.flash().put("url", referer);
         return ctx.session().get("studentUsername");
     }
 
@@ -28,4 +28,5 @@ public class Secured extends Security.Authenticator {
     public Result onUnauthorized(Context ctx) {
         return redirect(routes.Application.login());
     }
+
 }

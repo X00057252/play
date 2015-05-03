@@ -7,7 +7,6 @@
 
    =========================================================== 
 */
-
 package controllers;
 
 import com.avaje.ebean.Ebean;
@@ -21,7 +20,9 @@ import util.StudentTransformer;
 import views.html.account;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static play.data.Form.form;
 
@@ -29,10 +30,25 @@ public class AccountController extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result myAccount() {
-        List<Event> currentEvent = Event.findEvent();
-
         String userName = session("studentUsername");
         Student student = Student.findByStudentUsername(userName);
+        List<StuEvent> stuEvents = StuEvent.findByStuId(student.studentId);
+        Set<Long> stuEventIds = new HashSet<Long>();
+        if(stuEvents != null)
+        {
+            for(StuEvent stuEvent: stuEvents)
+            {
+                stuEventIds.add(stuEvent.eventID);
+            }
+        }
+        List<Event> currentEvent = Event.findEvent();
+        for(Event event : currentEvent)
+        {
+            if(stuEventIds.contains(event.eventId))
+            {
+                event.status = "BOOKED";
+            }
+        }
         Form<StudentCourseDto> form = form(StudentCourseDto.class);
         StudentCourseDto studentCourseForm = StudentTransformer.fillStudentToForm(student);
         form = form.fill(studentCourseForm);

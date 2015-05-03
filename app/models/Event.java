@@ -34,6 +34,7 @@ public class Event extends Model {
   // add an ID field
   // mapped to primary key field 'Id' in the Event table
   @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   public Long eventId;
 
   
@@ -53,7 +54,8 @@ public class Event extends Model {
   public int eventMaxCapacity;  
   @Constraints.Required
   public int eventCurrCapacity; 
-
+    @Transient
+    public String status;
   
   public Event() {
   }

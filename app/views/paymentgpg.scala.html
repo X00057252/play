@@ -1,4 +1,5 @@
-@main("Payment") {
+@(userName: String, course: Course, accommodation: String)
+@main("Payment", userName) {
 
 <!-- ===========================================================
 
@@ -22,12 +23,12 @@
 						This is the breakdown of your transaction:
 					</p>			
 					<p>
-						HERE GOES TABLE WITH THE BREAKDOWN:<br>
-						- course<br>
-						- accommodation (if applicable)<br>
-						- subtotal<br>
-						- VAT @@ 23%<br>
-						- total paid<br>						
+					<br>
+						- course : <b>@course.courseName</b><br>
+						- accommodation : <b>@accommodation</b><br>
+						- subtotal : <b>@(course.coursePPW * course.courseLength)</b><br>
+						- VAT @@ 23% : <b>@(course.coursePPW * course.courseLength * 0.23)</b><br>
+						- total paid : <b>@((course.coursePPW * course.courseLength) + (course.coursePPW * course.courseLength * 0.23))</b><br>
 					</p>
 
 			
@@ -36,7 +37,8 @@
 					</div>	
 					
 
-					<p><br></p>					
+					<p><br></p>	
+							
 				
 					<br>
 				</article>

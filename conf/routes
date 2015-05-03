@@ -39,6 +39,7 @@ POST     /updateProfile              controllers.AccountController.update()
 
 # Apply page
 GET     /apply/:courseId             controllers.StudentCourseController.apply(courseId: Long)
+GET     /deleteApplication/:courseId controllers.StudentCourseController.deleteApplication(courseId: Long)
 GET     /register                    controllers.StudentCourseController.register()
 POST    /studentCourse/save          controllers.StudentCourseController.saveStudentCourse()
 POST    /studentCourse/apply         controllers.StudentCourseController.applyStudentCourse()

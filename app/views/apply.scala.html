@@ -11,7 +11,6 @@
 	April 2015 
 	
 =========================================================== -->
-
 <body id="apply">
 
 <section>
@@ -150,9 +149,18 @@
 							<label class="formLabel" for="accommOption">I will stay with:</label>
 							<div class="formRowIndent">
 								<ul class="formList">
-									<li><input class="radioBtn" id="accommOptionHost" name="accommOption" type="radio" value="Host Family"><label for="accommOptionHost">Host Family</label></li>
+                                    @if(stuCourseForm("accomodationType").value == "Host Family") {
+                                    <li><input class="radioBtn" id="accommOptionHost" name="accommOption" type="radio" value="Host Family" checked><label for="accommOptionHost">Host Family</label></li>
 									<li><input class="radioBtn" id="accommOptionPrivate" name="accommOption" type="radio" value="private"><label for="accommOptionPrivate">Private Rental</label></li>
-								</ul>
+                                    }else {@if(stuCourseForm("accomodationType").value == "private") {
+                                    <li><input class="radioBtn" id="accommOptionHost" name="accommOption" type="radio" value="Host Family" checked><label for="accommOptionHost">Host Family</label></li>
+                                    <li><input class="radioBtn" id="accommOptionPrivate" name="accommOption" type="radio" value="private" checked><label for="accommOptionPrivate">Private Rental</label></li>
+                                    }else{
+                                    <li><input class="radioBtn" id="accommOptionHost" name="accommOption" type="radio" value="Host Family"><label for="accommOptionHost">Host Family</label></li>
+                                    <li><input class="radioBtn" id="accommOptionPrivate" name="accommOption" type="radio" value="private"><label for="accommOptionPrivate">Private Rental</label></li>
+                                    }
+                                    }
+                                </ul>
 							</div>								
 						</fieldset>	
 						<br>

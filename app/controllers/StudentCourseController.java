@@ -7,7 +7,6 @@
 
    =========================================================== 
 */
-
 package controllers;
 
 import com.avaje.ebean.Ebean;
@@ -122,7 +121,16 @@ public class StudentCourseController extends Controller {
             Ebean.save(stuCourse);
         }
 
-        return ok(paymentgpg.render());
+        return ok(paymentgpg.render(userName, course, stuCourse.courseAccommodation));
+    }
+
+    public static Result deleteApplication(Long courseId) {
+        Student student = Student.findByStudentUsername(session("studentUsername"));
+        StuCourse stuCourse = StuCourse.findByStuIdCourseIdStatus(student.studentId, courseId, "Saved for later");
+        Ebean.delete(StuCourse.class, stuCourse.stuCourseId);
+        return redirect(
+                routes.AccountController.myAccount()
+        );
     }
 
     @Security.Authenticated(Secured.class)
@@ -140,13 +148,21 @@ public class StudentCourseController extends Controller {
     }
 
     public static Result register() {
+        String referer = form().bindFromRequest().get("referer");
+        Long courseId = null;
+        if(StringUtils.isNotBlank(referer) && referer.contains("/"))
+        {
+            courseId = Long.parseLong(referer.substring(referer.lastIndexOf("/") + 1));
+        }
         String userName = session("studentUsername");
         Form<StudentCourseDto> form = form(StudentCourseDto.class);
+        StudentCourseDto studentCourseForm = new StudentCourseDto();
         if (StringUtils.isNotBlank(userName)) {
             Student student = Student.findByStudentUsername(userName);
-            StudentCourseDto studentCourseForm = StudentTransformer.fillStudentToForm(student);
-            form = form.fill(studentCourseForm);
+            studentCourseForm = StudentTransformer.fillStudentToForm(student);
         }
+        studentCourseForm.setCourseId(courseId);
+        form = form.fill(studentCourseForm);
         return ok(apply.render(form, Course.findGeneral(), Course.findExamPrep(), Course.findAcYear()));
     }
 

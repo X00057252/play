@@ -7,7 +7,6 @@
 
    =========================================================== 
 */
-
 package controllers;
 
 import com.avaje.ebean.Ebean;
@@ -29,19 +28,19 @@ public class EventController extends Controller {
 
     public static Result bookEvent(Long studentId, Long eventId) {
         Event event = Event.findById(eventId);
-        if(event.eventMaxCapacity > event.eventCurrCapacity)
+        if(event.eventCurrCapacity > 0)
         {
             StuEvent stuEvent = new StuEvent();
             stuEvent.studentID = studentId;
             stuEvent.eventID = eventId;
 
-            event.eventCurrCapacity += 1;
-            Ebean.update(event);
+            event.eventCurrCapacity = event.eventCurrCapacity - 1;
+            Ebean.createSqlUpdate("update event set event_curr_capacity = event_curr_capacity - 1 where event_id = " + eventId).execute();
             Ebean.save(stuEvent);
         }
         else
         {
-            badRequest("Event has no room");
+            return badRequest("Event has no room");
         }
         return ok("{\"freeSpace\" : " +event.eventCurrCapacity+" }");
     }
@@ -49,8 +48,8 @@ public class EventController extends Controller {
     public static Result unBookEvent(Long studentId, Long eventId) {
         Event event = Event.findById(eventId);
         StuEvent stuEvent = StuEvent.findByStuIdEventId(studentId, eventId);
-        event.eventCurrCapacity -= 1;
-        Ebean.update(event);
+        event.eventCurrCapacity += 1;
+        Ebean.createSqlUpdate("update event set event_curr_capacity = event_curr_capacity + 1 where event_id = " + eventId).execute();
         Ebean.delete(StuEvent.class, stuEvent.stuEventId);
 
         return ok("{\"freeSpace\" : " +event.eventCurrCapacity+" }");

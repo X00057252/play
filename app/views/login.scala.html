@@ -1,4 +1,4 @@
-@(form: Form[Application.Login])
+@(form: Form[Application.Login], referer: String = null)
 @main("Login") {
 
 <!-- ===========================================================
@@ -22,13 +22,12 @@
 			
 						@helper.form(routes.Application.authenticate) {
 						
-
+                        <input type="hidden" name="referer" value="@referer">
 						@if(form.hasGlobalErrors) {
 						<p class="error">
 						@form.globalError.message
 						</p>
 						}
-
 						<form class="loginForm" action="" method="post" id="loginForm">
 							<br><br>
 							<div class="formRow">
@@ -55,11 +54,12 @@
 						<p>
 						<button type="submit">Login</button>
 						</p> -->
+						
 						}	
 					</p>					
 					<h4> Don't have an account? </h4>
 					<p>
-						<a href="@routes.StudentCourseController.register()">Click here to apply for a course and create an account.</a>
+						<a href="@routes.StudentCourseController.register()?referer=@referer">Click here to apply for a course and create an account.</a>
 					</p>				
 					<br>
 				</article>

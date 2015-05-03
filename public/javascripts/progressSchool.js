@@ -170,9 +170,11 @@ function emailCheck(input) {
                                 $('#message1').text('Action successful').show().delay(5000).fadeOut();
                                 $('#action'+eventId).val(action == 'book' ? 'unbook' : 'book');
                                 $('#eventSubmitBtn'+eventId).text(action == 'book' ? 'Un Book Event' : 'Book Event');
-                                $('#currentCapacity'+eventId).text(data['freeSpace']);
+                                $('#currentCapacity'+eventId).html($.parseJSON(data)['freeSpace']);
                              }
-        var failureHandler = function(xhr, status, error){ $('#message1').text('Action failed with error ' + error).show().delay(5000).fadeOut();}
+        var failureHandler = function(xhr, status, error){
+         $('#message1').text('Action failed with error ' + xhr.responseText).show().delay(5000).fadeOut();
+        }
         ajaxHandler(url, 'POST', null, successHandler, failureHandler);
     }
 
@@ -189,7 +191,7 @@ function emailCheck(input) {
                                         }
                                         else
                                         {
-                                            window.location="/paymentgpg"
+                                            window.location="/paymentgpg?courseId="+data['courseId']
                                         }
                                         }
         var failureHandler = function(xhr, status, error){ $('#message').text('Course Save is failed with ' + error).show().delay(5000).fadeOut();}

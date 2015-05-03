@@ -72,6 +72,8 @@ public class StuEvent extends Model {
         return StuEvent.find.where().eq("studentID", studentId).eq("eventID", eventId).findUnique();
     }
 
-  
+    public static List<StuEvent> findByStuId(Long studentId) {
+        return StuEvent.find.where().eq("studentID", studentId).findList();
+    }
   
 }
