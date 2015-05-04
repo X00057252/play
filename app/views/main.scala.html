@@ -10,6 +10,7 @@
 	April 2015 
 
 =========================================================== -->
+
 <html id="@title">
 
 	<head>
@@ -40,13 +41,13 @@
 				<div class="navDown"></div> <!-- this div is to keep navigation in line to the bottom -->			
 				
 				<!-- Greeting message and logout button -->
-				@if(StringUtils.isBlank(userName)){
+				@if(StringUtils.isBlank(userName)){ <!-- is not logged in -->
 				<form class="logoutMsg">
 					<div>
 						<a class="logoutBttn" href="@routes.Application.login()">Login</a>
 					</div>
 				</form>
-				}else{
+				}else{ <!-- is logged in -->
 				<form class="logoutMsg">
 					<div>
 						<a class="logoutBttn" href="@routes.Application.logout()">Logout</a>
@@ -64,13 +65,6 @@
 					<a href="@routes.Application.visitorsguide()" id="visitNav"> <br> VISITORS' GUIDE </a>
 					<a href="@routes.Application.contactus()" id="contactNav"> <br> CONTACT </a>
 					<a href="@routes.AccountController.myAccount()" id="accountNav"> <br> MY ACCOUNT </a>
-					<!-- @if(StringUtils.isBlank(userName)){
-                        <a href="@routes.Application.login()" id="loginNav"> <br> LOGIN </a>
-                    }else{
-                        <a href="@routes.AccountController.myAccount()" id="accountNav"> <br> @userName </a>
-                        <a href="@routes.Application.logout()">Logout</a>
-                    } -->
-
 				</nav> <!--end of: mainNav-->
 
 
@@ -110,7 +104,7 @@
 					</p>
 				</article>				
 			</section>
-		</footer> <!--footer-->	
+		</footer> 	
 
 
 </div> 	<!-- End of: mainWrap Main wrapper, includes everything -->

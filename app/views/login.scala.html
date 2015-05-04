@@ -14,59 +14,44 @@
 		
 		<section>
 
-				<article class="wideArticle">
-					<h3> Login to your account </h3>
-					<p>
-						Fill in your login details below to go to your account page.
-					</p>					
-			
-						@helper.form(routes.Application.authenticate) {
-						
-                        <input type="hidden" name="referer" value="@referer">
-						@if(form.hasGlobalErrors) {
+			<article class="wideArticle">
+				<h3> Login to your account </h3>
+				<p>
+					Fill in your login details below to go to your account page.
+				</p>					
+		
+				@helper.form(routes.Application.authenticate) {
+					<input type="hidden" name="referer" value="@referer">
+					@if(form.hasGlobalErrors) {
 						<p class="error">
-						@form.globalError.message
+							@form.globalError.message
 						</p>
-						}
-						<form class="loginForm" action="" method="post" id="loginForm">
-							<br><br>
-							<div class="formRow">
-								<label class="formLabel" for="userName">Username:</label>
-								<input class="loginInput" id="userName" type="studentUsername" name="studentUsername" placeholder="Username" value="@form("studentUsername").value" required>
-							</div>
-							<div class="formRow">
-								<label class="formLabel" for="pass">Password:</label>
-								<input class="loginInput" id="pass" type="password" name="studentPassword" placeholder="Password" required>
-							</div>
-							<br>
-							<div class="formRowIndent">
-								<input class="formBttn" name="login" id="loginBtn" type="submit" value="Login">
-							</div>	
-							<br><br>							
-						</form>							
-						<!-- 				
-						<p>
-						<input type="text" name="studentUsername" placeholder="Username" value="@form("studentUsername").value">
-						</p>
-						<p>
-						<input type="password" name="studentPassword" placeholder="Password">
-						</p>
-						<p>
-						<button type="submit">Login</button>
-						</p> -->
-						
-						}	
-					</p>					
-					<h4> Don't have an account? </h4>
-					<p>
-						<a href="@routes.StudentCourseController.register()?referer=@referer">Click here to apply for a course and create an account.</a>
-					</p>				
-					<br>
-				</article>
-
-			
-			
-			
+					}
+					<form class="loginForm" action="" method="post" id="loginForm">
+						<br><br>
+						<div class="formRow">
+							<label class="formLabel" for="userName">Username:</label>
+							<input class="loginInput" id="userName" type="studentUsername" name="studentUsername" placeholder="Username" value="@form("studentUsername").value" required>
+						</div>
+						<div class="formRow">
+							<label class="formLabel" for="pass">Password:</label>
+							<input class="loginInput" id="pass" type="password" name="studentPassword" placeholder="Password" required>
+						</div>
+						<br>
+						<div class="formRowIndent">
+							<input class="formBttn" name="login" id="loginBtn" type="submit" value="Login">
+						</div>	
+						<br><br>							
+					</form>							
+				}	
+					
+				<h4> Don't have an account? </h4>
+				<p>
+					<a href="@routes.StudentCourseController.register()?referer=@referer">Click here to apply for a course and create an account.</a>
+				</p>				
+				<br>
+				
+			</article>
 
 			
 			

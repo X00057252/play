@@ -14,36 +14,35 @@
 		
 		<section>
 
-				<article class="wideArticle">
-					<h2> Payment confirmation </h2>
-					<p>
-						Thank you! Your payment has been processed successfully!
-					</p>					
-					<p>
-						This is the breakdown of your transaction:
-					</p>			
-					<p>
-					<br>
-						- course : <b>@course.courseName</b><br>
-						- accommodation : <b>@accommodation</b><br>
-						- subtotal : <b>@(course.coursePPW * course.courseLength)</b><br>
-						- VAT @@ 23% : <b>@(course.coursePPW * course.courseLength * 0.23)</b><br>
-						- total paid : <b>@((course.coursePPW * course.courseLength) + (course.coursePPW * course.courseLength * 0.23))</b><br>
-					</p>
-
+			<article class="wideArticle">
+				<h2> Payment confirmation </h2>
+				<p>
+					Thank you! Your payment has been processed successfully!
+				</p>					
+				<p>
+					This is the breakdown of your transaction:
+				</p>
+				<!-- Calculation and display of total price: -->
+				<p> 
+				<br>
+					- course : <b>@course.courseName</b><br>
+					- accommodation : <b>@accommodation</b><br>
+					- subtotal : <b>@(course.coursePPW * course.courseLength)</b><br>
+					- VAT @@ 23% : <b>@(course.coursePPW * course.courseLength * 0.23)</b><br>
+					- total paid : <b>@((course.coursePPW * course.courseLength) + (course.coursePPW * course.courseLength * 0.23))</b><br>
+				</p>
 			
-					<div class="formRowIndent">
-						<a class="tableBttn" href="@routes.AccountController.myAccount()">Return to My Account page</a>
-					</div>	
-					
-
-					<p><br></p>	
+				<div class="formRowIndent">
+					<a class="tableBttn" href="@routes.AccountController.myAccount()">Return to My Account page</a>
+				</div>	
+				
+				<p><br></p>	
 							
 				
-					<br>
-				</article>
+				<br>
+			</article>
 
-			
+	
 			
 			
 
