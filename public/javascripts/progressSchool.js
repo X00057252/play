@@ -53,12 +53,14 @@ function emailCheck(input) {
 
 
     $(function() {
+        //selecting course from drop-down based on courseid
         if($('#selectedCourseId').val())
         {
             $('#courseSelect').val($('#selectedCourseId').val())
         }
         $('#studentCourseForm').submit(function(event) {
             event.preventDefault();
+            //check if confirm email and confirm password match with originals and submit apply course
             if($('#emailConf').val() != $('#emailConf').val())
             {
                 $('#message').text("Emails don't match! Please re-enter.").show().delay(5000).fadeOut();
@@ -73,6 +75,7 @@ function emailCheck(input) {
             }
         });
 
+        //check if confirm email and confirm password match with originals and submit update profile
         $('#accountUpdateForm').submit(function(event) {
             event.preventDefault();
             if($('#emailConf').val() != $('#emailConf').val())
@@ -98,13 +101,14 @@ function emailCheck(input) {
         ajaxHandler('updateProfile', 'POST', data, successHandler, failureHandler);
     }
 
+    //function for booking/unbooking event
     function submitEvent(eventId, studentId){
         var action = $('#action'+eventId).val();
         var url = (action == 'book' ? ('/bookEvent/student/'+studentId+'/event/'+eventId) : ('/unBookEvent/student/'+studentId+'/event/'+eventId));
         var successHandler = function(data){
                                 $('#message1').text('Action successful').show().delay(5000).fadeOut();
                                 $('#action'+eventId).val(action == 'book' ? 'unbook' : 'book');
-                                $('#eventSubmitBtn'+eventId).text(action == 'book' ? 'Un Book Event' : 'Book Event');
+                                $('#eventSubmitBtn'+eventId).text(action == 'book' ? 'Un Book Event' : 'Book Event'); //re-label event button
                                 $('#currentCapacity'+eventId).html($.parseJSON(data)['freeSpace']);
                              }
         var failureHandler = function(xhr, status, error){
@@ -153,6 +157,7 @@ function emailCheck(input) {
                }
     }
 
+    //ajax handler which takes url, verb data, callback methods and make ajax calls
     function ajaxHandler(url, type, data, successHandler, failureHandler)
     {
         var request = {url: url, type: type}

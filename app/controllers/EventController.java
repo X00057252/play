@@ -26,8 +26,17 @@ import static play.data.Form.form;
 
 public class EventController extends Controller {
 
+    /**
+     * bookevent functionality
+     * @param studentId
+     * @param eventId
+     * @return
+     */
     public static Result bookEvent(Long studentId, Long eventId) {
+        //get event by eventid from db
         Event event = Event.findById(eventId);
+        //check if event free spaces is greater than 0, if yes create new student event and decrease free space by 1 and update event
+        //otherwise we throw badrequest with response event has no room
         if(event.eventCurrCapacity > 0)
         {
             StuEvent stuEvent = new StuEvent();
@@ -45,11 +54,21 @@ public class EventController extends Controller {
         return ok("{\"freeSpace\" : " +event.eventCurrCapacity+" }");
     }
 
+    /**
+     * unbook event
+     * @param studentId
+     * @param eventId
+     * @return
+     */
     public static Result unBookEvent(Long studentId, Long eventId) {
+        //get event by eventid from db
         Event event = Event.findById(eventId);
+        //get student event by studnet id and eventid from db
         StuEvent stuEvent = StuEvent.findByStuIdEventId(studentId, eventId);
+        //increment freespace by 1 and  and uodate event
         event.eventCurrCapacity += 1;
         Ebean.createSqlUpdate("update event set event_curr_capacity = event_curr_capacity + 1 where event_id = " + eventId).execute();
+        //delete the student event
         Ebean.delete(StuEvent.class, stuEvent.stuEventId);
 
         return ok("{\"freeSpace\" : " +event.eventCurrCapacity+" }");
