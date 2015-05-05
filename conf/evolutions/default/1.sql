@@ -13,13 +13,6 @@
 
 # --- !Ups
 
-create table account (
-  email                     varchar(255) not null,
-  name                      varchar(255),
-  password                  varchar(255),
-  constraint pk_account primary key (email)
-);
-
 create table course (
   course_id                 bigint not null auto_increment,
   course_type               varchar(20),
