@@ -170,7 +170,7 @@ drop table if exists stu_event;
 drop table if exists course;
 drop table if exists event;
 drop table if exists student;
-drop table if exists account;
+
 
 
 SET REFERENTIAL_INTEGRITY TRUE;
