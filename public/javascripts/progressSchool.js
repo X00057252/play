@@ -12,6 +12,7 @@
 /* Governing read more/less links in articles: --
  		shID+'show' - "Read more" link
 		shID - Hidden section          */  
+
 		
 function showHide(shID) {
 	var top = document.getElementById(shID+'-top').offsetTop; //Getting position of top of article
@@ -47,21 +48,20 @@ function emailCheck(input) {
 		document.getElementById("emailConf").setCustomValidity('');
 	}
 }
-// End of: Check if email and confirmed email are the same --
-
-
-
+// End of: Check if email and confirmed email are the same -- 
 
     $(function() {
-        //selecting course from drop-down based on courseid
-        if($('#selectedCourseId').val())
+
+        
+        if($('#selectedCourseId').val()) // setting the value to course drop-down based on course we selected in previous page - apply.scala.html
         {
             $('#courseSelect').val($('#selectedCourseId').val())
         }
-        $('#studentCourseForm').submit(function(event) {
-            event.preventDefault();
+        $('#studentCourseForm').submit(function(event) { //assigning an anonymous function to submit event of the form studentCourseForm
+            event.preventDefault(); //stops the default action of an element from happening
+
             //check if confirm email and confirm password match with originals and submit apply course
-            if($('#emailConf').val() != $('#emailConf').val())
+            if($('#email').val() != $('#emailConf').val())
             {
                 $('#message').text("Emails don't match! Please re-enter.").show().delay(5000).fadeOut();
             }
@@ -75,9 +75,9 @@ function emailCheck(input) {
             }
         });
 
-        //check if confirm email and confirm password match with originals and submit update profile
-        $('#accountUpdateForm').submit(function(event) {
-            event.preventDefault();
+        //check if confirm email and confirm password match with originals and submit update profile on account.scala.html
+        $('#accountUpdateForm').submit(function(event) { //assigning an anonymous function to submit event of the form accountUpdateForm
+            event.preventDefault(); //stops the default action of an element from happening
             if($('#emailConf').val() != $('#emailConf').val())
             {
                 $('#message').text("Emails don't match! Please re-enter.").show().delay(5000).fadeOut();
@@ -96,47 +96,49 @@ function emailCheck(input) {
     function updateAccount()
     {
         var data = accountData();
-        var successHandler = function(){ $('#message').text('Account update is successful').show().delay(5000).fadeOut();}
-        var failureHandler = function(xhr, status, error){ $('#message').text('Course Save is failed with ' + error).show().delay(5000).fadeOut();}
+        var successHandler = function(){ $('#message').text('Account update is successful').show().delay(5000).fadeOut();} //display success message
+        var failureHandler = function(xhr, status, error){ $('#message').text('Course Save is failed with ' + error).show().delay(5000).fadeOut();} //display failure message with error code
         ajaxHandler('updateProfile', 'POST', data, successHandler, failureHandler);
     }
 
     //function for booking/unbooking event
     function submitEvent(eventId, studentId){
-        var action = $('#action'+eventId).val();
-        var url = (action == 'book' ? ('/bookEvent/student/'+studentId+'/event/'+eventId) : ('/unBookEvent/student/'+studentId+'/event/'+eventId));
+        var action = $('#action'+eventId).val(); // select book or unbook action from account.scala.html
+        var url = (action == 'book' ? ('/bookEvent/student/'+studentId+'/event/'+eventId) : ('/unBookEvent/student/'+studentId+'/event/'+eventId)); // set url based on action type
         var successHandler = function(data){
                                 $('#message1').text('Action successful').show().delay(5000).fadeOut();
                                 $('#action'+eventId).val(action == 'book' ? 'unbook' : 'book');
                                 $('#eventSubmitBtn'+eventId).text(action == 'book' ? 'No, I won\'t be there.' : 'Yes, I\'m going!'); //re-label event button
-                                $('#currentCapacity'+eventId).html($.parseJSON(data)['freeSpace']);
+                                $('#currentCapacity'+eventId).html($.parseJSON(data)['freeSpace']); //adjust currentCapacity
                              }
+                            
         var failureHandler = function(xhr, status, error){
          $('#message1').text('Action failed with error ' + xhr.responseText).show().delay(5000).fadeOut();
         }
         ajaxHandler(url, 'POST', null, successHandler, failureHandler);
     }
 
+	//function for applying for a course
     function applyCourse(action)
     {
         var data = accountData();
-        data['courseId'] = $('#courseSelect').val();
+        data['courseId'] = $('#courseSelect').val(); // setting the value to course drop-down based on course we selected  - apply.scala.html
         data['courseStartDate'] = $('#courseStartDate').val();
         data['accomodationType'] = $('[name=accommOption]:checked').val();
         var successHandler = function(){ $('#message').text('Course Save is successful').show().delay(5000).fadeOut();
                                         if(action == 'save')
                                         {
-                                            window.location="/account"
+                                            window.location="/account" // open /account page if successful
                                         }
                                         else
                                         {
-                                            window.location="/paymentgpg?courseId="+data['courseId']
+                                            window.location="/paymentgpg?courseId="+data['courseId'] //open paymentgpg with course details
                                         }
                                         }
         var failureHandler = function(xhr, status, error){ $('#message').text('Course Save is failed with ' + error).show().delay(5000).fadeOut();}
         ajaxHandler(action == 'save' ? '/studentCourse/save' : '/studentCourse/apply', 'POST', data, successHandler, failureHandler);
     }
-
+	// function for populating the form with student details at apply.scala.html
     function accountData()
     {
         return {
