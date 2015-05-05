@@ -77,7 +77,7 @@
 								<input class="formInputReq" id="nationality" name="nationality" type="text" placeholder="Enter your nationality" value="@stuCourseForm("nationality").value" required>
 							</div>
 							<div class="formRow">
-								<label class="formLabel" for="dateBirth">*Date of Birth:</label>
+								<label class="formLabel" for="dateBirth">*Date of Birth: (YYYY-MM-DD)</label>
 								<input class="formInputReq" id="dateOfBirth" name="dateOfBirth" type="date" placeholder="Enter your date of birth" value="@stuCourseForm("dateOfBirth").value" required>
 							</div>								
 						</fieldset>	
@@ -196,12 +196,12 @@
 									<td class="toRight">&nbsp;</td>		
 								</tr>
 								<tr class="darkRow">
-									<td class="toLeft">Start date:</td>
+									<td class="toLeft">Start date: </td>
 									<td class="toRight">@mycourse.courseStartDate.format("dd MMM yyyy")</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>
 								<tr>
-									<td class="toLeft">End date:</td>
+									<td class="toLeft">End date: </td>
 									<td class="toRight">@mycourse.courseEndDate.format("dd MMM yyyy")</td>
 									<td class="toRight">&nbsp;</td>	
 								</tr>									
