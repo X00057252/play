@@ -108,7 +108,7 @@ function emailCheck(input) {
         var successHandler = function(data){
                                 $('#message1').text('Action successful').show().delay(5000).fadeOut();
                                 $('#action'+eventId).val(action == 'book' ? 'unbook' : 'book');
-                                $('#eventSubmitBtn'+eventId).text(action == 'book' ? 'Un Book Event' : 'Book Event'); //re-label event button
+                                $('#eventSubmitBtn'+eventId).text(action == 'book' ? 'No, I won\'t be there.' : 'Yes, I\'m going!'); //re-label event button
                                 $('#currentCapacity'+eventId).html($.parseJSON(data)['freeSpace']);
                              }
         var failureHandler = function(xhr, status, error){

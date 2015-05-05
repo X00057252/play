@@ -42,30 +42,26 @@ public class Application extends Controller {
 
 
     public static Result index() {
-        return ok(index.render()); 
+        return ok(index.render(session("studentUsername"))); 
 		
     }
 
 	public static Result accommodation() {
-        return ok(accommodation.render());
+        return ok(accommodation.render(session("studentUsername")));
 	}
 	
 	public static Result studentinfo() {
-        return ok(studentinfo.render());
+        return ok(studentinfo.render(session("studentUsername")));
 	}
 	
 	public static Result visitorsguide() {
-        return ok(visitorsguide.render());
+        return ok(visitorsguide.render(session("studentUsername")));
 	}
 	
 	public static Result contactus() {
-        return ok(contactus.render());
+        return ok(contactus.render(session("studentUsername")));
 	}
 	
-	/*public static Result loginscreen() {
-        return ok(loginscreen.render());
-	} */
-
 	public static Result paymentgpg() {
         String userName = session("studentUsername");
         Student student = Student.findByStudentUsername(userName);

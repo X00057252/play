@@ -129,7 +129,6 @@
 						<br>
 						<div class="formRowIndent">
 							<input class="formBttn" name="changePersDetails" id="changePersDetails" type="submit" onclick="" value="Submit Updated Details">
-							<input class="formBttn" name="reset" id="resetPersDetails" type="reset" value="Reset Details">
 						</div>
                         <div id="message" style="display:none"></div>
 					} <!-- End of: Form -->
@@ -290,12 +289,12 @@
                             @if("BOOKED".equals(socEvent.status)){
                                 <input type="hidden" id="action@socEvent.eventId" value="unbook">
                                 <td class="toLeft">
-                                    <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">Un Book event</a>
+                                    <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">No, I won't be there.</a>
                                 </td>
                             } else {
                                 <input type="hidden" id="action@socEvent.eventId" value="book">
                                 <td class="toLeft">
-                                    <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">Book event</a>
+                                    <a class="formBttn" href="#" id="eventSubmitBtn@socEvent.eventId" onclick="submitEvent(@socEvent.eventId, @stuCourseForm("studentId").value)">Yes, I'm going!</a>
                                 </td>
                             }
 						</tr>
